@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/sigin.css">
+    <title>Iniciar sessão</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="./img/logo.png" alt="Spotify">
+            </a>
+        </div>
+    </header>
+
+    <section>
+
+        <div class="main">
+            <h1>Entrar no Fire Music</h1>
+
+            <div class="account-connect">
+                <button class="a-c-btn" id="g"><img src="./imagens.inicio/google.png" alt="Google"><span>Continuar com o
+                        Google</span></button>
+                <button class="a-c-btn" id="f"><img src="./imagens.inicio/facebook.png" alt="Facebook"><span>Continuar
+                        com o Facebook</span></button>
+                <button class="a-c-btn" id="a"><img src="./imagens.inicio/apple.png" alt="Apple"><span>Continuar com a
+                        Apple</span></button>
+                <button class="a-c-btn" id="t"><span>Continuar com o número de telefone</span></button>
+            </div>
+
+            <hr>
+
+
+            <div class="log-in">
+                <form id="form">
+                    <label for="email">E-mail ou nome usuário</label>
+                    <input type="text" id="email" placeholder="Email ou nome de usuário" required>
+
+
+                    <label for="password">Senha</label>
+                    <input type="password" id="password"  placeholder="Senha" required>
+
+                    <div class="switch">
+                        <input type="checkbox" id="switch" checked>
+                        <label for="switch"></label>
+                        <span>Lembrar de mim</span>
+                    </div>
+
+                    <input type="submit" class="entrar" name="acao" value="Entrar">
+                    <a href="#">Esqueceu a senha?</a>
+                </form>
+            </div>
+
+<hr>
+
+<div class="last">
+    <span>Não tem uma conta?</span>
+    <a href="#">Inscreva-se</a>
+</div>
+        </div>
+
+    </section>
+
+
+
+    <script src="./js/sigin.js"></script>
+</body>
+
+</html>

@@ -7,6 +7,33 @@
 
 html,body{height: 100%;}
 
+.login{
+    background-color: rgb(172, 82, 22);
+    height: 70px;
+}
+
+.login ul{
+    float: right;
+    margin: 15px;    
+}
+
+.login ul li{
+    display: inline;
+}
+
+.login ul li button{
+    width: 200px;
+    border-radius: 30px;
+    background-color: black;
+}
+
+.login ul li a{
+    text-decoration: none;
+    font-size: 25px;
+    padding: 20px;
+    color: white;
+}
+
 .sidebar{
     float: left;
     width: 250px;
@@ -59,15 +86,6 @@ html,body{height: 100%;}
     text-transform: uppercase;
     font-size: 14px;
 }
-
-/* .sidebar_menu_item{
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    display: inline-block;
-    color: black;font-weight: bolder;
-} */
 
 .sidebar_menu_item span{
     font-weight: bolder;
@@ -224,4 +242,4 @@ html,body{height: 100%;}
 
 
 
-    
+

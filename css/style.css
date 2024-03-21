@@ -24,6 +24,7 @@ html,body{height: 100%;}
 .login ul li button{
     width: 200px;
     border-radius: 30px;
+    border: solid 1px rgb(172, 82, 22);
     background-color: black;
 }
 
@@ -51,6 +52,10 @@ html,body{height: 100%;}
 .sidebar_menu{
     margin: 20px 0;
     color: rgb(190, 190, 190);
+}
+
+.sidebar_menu :hover{
+    color: rgba(255, 110, 13, 0.61);
 }
 
 .sidebar_logo img{

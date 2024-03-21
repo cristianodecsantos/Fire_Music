@@ -29,6 +29,10 @@ section {
     justify-content: center;
 }
 
+.main a img{
+    width: 250px;
+}
+
 section div.main {
     margin: 32px 0;
     padding: 32px;

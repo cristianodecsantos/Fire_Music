@@ -228,9 +228,31 @@
     </div>
     <!-- fim main-->
 
+     <!-- player -->
+     <div class="player">
+        <div class="player_artist"></div> 
+
+        <div class="player_control">
+            <div class="player_control_buttons">
+                <a href=""><i class="fas fa-backward"></i></a>
+                <a style="display: none;" id="pauseBtn" href="#"><i class="far fa-pause-circle"></i></a>
+                <a id="playBtn" href="#"><i class="far fa-play-circle"></i></a>
+                <a href=""><i class="fas fa-forward"></i></a>
+            </div>
+
+            <audio src="musicas/01-tres-coracoes.mp3"></audio>
+
+            <div class="player_control_progress">
+                <div style="width: 60%;" class="player_control_progress_2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- fim player -->
+
 
     <script src="js/all.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/player.js"></script>
     
 </body>
 </html>

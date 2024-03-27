@@ -10,10 +10,8 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-    if(!validatePassword(passwordInput.value, 8)) {
-        alert("A senha precisa ser no mínimo de 8 dígitos.")
+    !validatePassword(passwordInput.value, 8) && alert("A senha precisa ser no mínimo de 8 dígitos.");
 
-    }
 
     form.submit();
 });

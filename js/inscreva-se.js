@@ -27,24 +27,27 @@ passwordConfirmation.addEventListener("blur", () => {
 
 function checkInputUsername(){
     const usernameValue = username.value;
+    const formItem = username.parentElement;
+    usernameValue === "" ? errorInput(username, "Preencha o campo obrigatório !") : (formItem.className = "form-content")
     
-    if (usernameValue === ""){
-        errorInput(username, "Preencha o campo obrigatório !")
-    } else{
-        const formItem = username.parentElement;
-        formItem.className = "form-content"
-    }
+    // if (usernameValue === ""){
+    //     errorInput(username, "Preencha o campo obrigatório !")
+    // } else{
+    //     const formItem = username.parentElement;
+    //     formItem.className = "form-content"
+    // }
 }
 
 function checkInputEmail(){
     const emailValue = email.value;
-    
-    if (emailValue === ""){
-        errorInput(email, "Preencha o campo obrigatório !")
-    } else{
-        const formItem = email.parentElement;
-        formItem.className = "form-content"
-    }
+    const formItem = username.parentElement;
+    emailValue === "" ? errorInput(username, "Preencha o campo obrigatório !") : (formItem.className = "form-content")
+    // if (emailValue === ""){
+    //     errorInput(email, "Preencha o campo obrigatório !")
+    // } else{
+    //     const formItem = email.parentElement;
+    //     formItem.className = "form-content"
+    // }
 }
 
 function checkInputPassword(){
@@ -84,9 +87,9 @@ function checkForm(){
     const isValid = [...formItems] .every((item) => {
         return item.className === "form-content"
     });
-    if (isValid){
-        alert("Cadastro realizado com sucessso !")
-    }
+    
+    isValid && alert("Cadastro realizado com sucessso !")
+
     
 }
 

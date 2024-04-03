@@ -17,23 +17,12 @@ form.addEventListener("submit", (event) => {
 });
 
 function isEmailValid(email) {
-    const emailRegex = new RegExp(
-        /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/
-    );
-
-    if (emailRegex.test(email)) {
-        return true;
-    }
-
-    return false;
-
+    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
-function validatePassword(password, minDigts) {
-    if(password.length >= minDigits) {
-        return true
-    }
 
-    return false;
+function validatePassword(password, minDigits) {
+    return password.length >= minDigits ? true : false;
 }
+
 

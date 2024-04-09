@@ -166,70 +166,7 @@ html,body{height: 100%;}
     margin: 8px 0px;
 }
 
-.player{
-    width: 100%;
-    padding: 20px;
-    height: 130px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    background-color: rgba(255, 110, 13, 0.61);
-}
 
-.player_artist{
-    width: 20px;
-}
-
-.player_artist img{
-    max-width: 70px;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.player_artist h3{
-    display: inline-block;
-    color: white;
-    font-weight: normal;
-    font-size: 20px;
-    vertical-align: middle;
-    margin-left: 10px;
-}
-
-.player_artist h3 > span{
-    color: rgb(200, 200, 200);
-    font-size: 13px;
-}
-
-.player_control{
-    width: 701%;
-    text-align: center;
-}
-
-.player_control_buttons a{
-    color: black;
-    margin: 8px 15px;
-    font-size: 18px;
-}
-.player_control_progress{
-    width: 100%;
-    max-width: 600px;
-    height: 7px;
-    margin-top: 20px;
-    position: relative;
-    border-radius: 8ox;
-    display: inline-block;
-    background: black;
-}
-.player_control_progress_2{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 7px;
-    border-radius: 8px;
-    background-color: white;
-}
 
 @media screen and (max-width: 1700px){
     .main_col{

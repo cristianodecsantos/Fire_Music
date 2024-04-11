@@ -1,0 +1,115 @@
+.controls_audio{
+    width: 100%;
+    border-radius: 0%;
+}
+
+#progress{
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: orange;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    background: rgb(255, 196, 0);
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 5px 5px rgba(255, 26, 26, 0.22);
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls div{
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    color: maroon;
+    box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
+}
+
+/* .controls div:nth-child(2){
+    transform: scale(1.5);
+    background: put orange;
+    color: combine with orange;
+    use this in the big screen player;
+} */
+
+.player{
+    width: 100%;
+    padding: 20px;
+    height: 180px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    background-color: rgba(255, 110, 13, 0.95);
+}
+
+.player_artist{
+    width: 20px;
+}
+
+.player_artist img{
+    max-width: 70px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.player_artist h3{
+    display: inline-block;
+    color: white;
+    font-weight: normal;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.player_artist h3 > span{
+    color: rgb(200, 200, 200);
+    font-size: 13px;
+}
+
+.player_control{
+    width: 701%;
+    text-align: center;
+}
+
+.player_control_buttons a{
+    color: black;
+    margin: 8px 15px;
+    font-size: 18px;
+}
+.player_control_progress{
+    width: 100%;
+    max-width: 600px;
+    height: 7px;
+    margin-top: 20px;
+    position: relative;
+    border-radius: 8ox;
+    display: inline-block;
+    background: black;
+}
+.player_control_progress_2{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 7px;
+    border-radius: 8px;
+    background-color: white;
+}

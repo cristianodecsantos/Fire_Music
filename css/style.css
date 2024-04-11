@@ -174,8 +174,13 @@ html,body{height: 100%;}
     }
 }
 @media screen and (max-width: 760px){
-    .main_col{
+    /* .main_col{
         width: 50%;
+    } */
+
+    .main_col img{
+        border-radius: 15px;
+        width: 100px;
     }
 }
 

@@ -260,7 +260,7 @@
                     <p class="title">
                         Watashitachi wa Sou Yatte Ikite Iku Jinshu na no
                     </p>
-                    <p class="artist">Masaru Yokoyama</p>
+                    <p class="artist"></p>
                 </div>
             </div>
             <div class="icons">
@@ -270,7 +270,7 @@
         </div>
         <div class="progress-controller">
             <div class="control-buttons">
-                <i class="fa-solid fa-shuffle"></i>
+                <i class="fa-solid fa-shuffle cShuffle" id="shuffle"></i>
                 <div><i class="fa-solid fa-backward-step" id="prev"></i></div>
                 <div id="play-pause"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
                 <!-- <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div> -->
@@ -282,7 +282,7 @@
                 <div class="progress-bar">
                     <div class="progress">
                         <audio loop class="controls_audio" id="song">
-                            <source src="musicas/01-tres-coracoes.mp3" type="audio/mpeg">
+                            <!-- <source src="musicas/01-tres-coracoes.mp3" type="audio/mpeg"> -->
                         </audio>
                     </div>
                     <!-- <input type="range" value="0" min="0" id="progress"> -->
@@ -293,9 +293,12 @@
         <div class="other-features">
             <i class="fas fa-list-ul"></i>
             <div class="volume-bar">
+                
                 <i class="fas fa-volume-down"></i>
-                <div class="progress-bar">
-                    <div class="progress"></div>
+                <div class="progress-barVolume">
+                    <div class="progressVolume">
+                         
+                    </div>
                 </div>
             </div>
         </div>
@@ -318,8 +321,9 @@
 
     
     <!-- fim player -->
-    <script src="js/all-music.js"></script>
-    <script src="js/player.js"></script>
+    <script src="js/all-music.js" type="module"></script>
+    <script src="js/player.js" type="module"></script>
+    <script src="js/api_vagalume.js"></script>
     <!-- <script src="js/all.min.js"></script>
     <script src="js/script.js"></script> -->
     

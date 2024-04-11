@@ -1,3 +1,4 @@
+import allMusic from "./all-music.js";
 let progress = document.getElementById('progress')
 let song = document.getElementById('song')
 let ctrlIcon = document.getElementById('ctrlIcon')
@@ -10,23 +11,38 @@ let prevBtn = document.querySelector("#prev");
 let nextBtn = document.querySelector("#next");
 let progressArea = document.querySelector(".progress-bar");
 let progressBar = document.querySelector(".progress");
+let progressAreaVolume = document.querySelector(".progress-barVolume");
+let progressBarVolume = document.querySelector(".progressVolume");
 let playPauseBtn =document.querySelector("#play-pause")
 let repeatBtn = document.getElementById("repeat")
 let Btnrepeat = document.querySelector(".btnRepeat")
 let playerHeart = document.getElementById("playerHeart")
 let pHeart = document.querySelector(".pHeart")
-let musicIndex = Math.floor((Math.random()* allMusic.lenght) + 1);
-isMusicPaused = true;
+let isAleatorio = document.getElementById("shuffle")
+let btnShuffle = document.querySelector(".cShuffle")
+const volumeControl = document.getElementById('volumeControl');
+
+let musicIndex = Math.floor((Math.random()) * allMusic.length);
+// console.log(allMusic.length)
+// console.log(musicIndex)
+const isMusicPaused = true;
 
 window.addEventListener("load", () =>{
     loadMusic(musicIndex);
+    // console.log(musicIndex)
 })
 
+
+
 function loadMusic(indexNumb){
-    musicName.innerText = allMusic[indexNumb - 1].name;
+    song.innerHTML = `<source>`
+    musicName.innerText = allMusic[indexNumb -1].name;
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `Fizer Music/Fizer_Music/img/${allMusic[indexNumb - 1].src}.jpg`
-    song.src = `Fizer Music/Fizer_Music/musicas/${allMusic[indexNumb - 1].src}.mp3`
+    musicImg.src = `img/${allMusic[5 - 1].img}.jpeg`
+    song.innerHTML=  `<source src="musicas/${allMusic[indexNumb - 1].src}.mp3" type="audio/mpeg">`
+    song.load()
+    console.log(musicIndex)
+    console.log(indexNumb)
 }
 
 
@@ -44,15 +60,23 @@ function pauseMusic(){
 
 
 function prevMusic(){
+    if(btnShuffle.classList.contains("clickedShuffle")){
+        musicIndex = Math.floor((Math.random()) * allMusic.length);
+    }
     musicIndex--;
-    musicIndex < 1 ? musicIndex = allMusic.lenght : musicIndex = musicIndex;
+    musicIndex < 1 ? musicIndex = allMusic.length  : musicIndex = musicIndex;
+    console.log(musicIndex)
     loadMusic(musicIndex);
     playMusic();
+    
 }
 
 function nextMusic(){
+    if(btnShuffle.classList.contains("clickedShuffle")){
+        musicIndex = Math.floor((Math.random()) * allMusic.length);
+    }
     musicIndex++;
-    musicIndex > allMusic.lenght ? musicIndex = 1 : musicIndex = musicIndex;
+    musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
     loadMusic(musicIndex);
     playMusic();
 }
@@ -64,6 +88,7 @@ playPauseBtn.addEventListener("click", () =>{
 
 prevBtn.addEventListener("click", () => {
     prevMusic();
+    console.log(musicIndex)
 })
 nextBtn.addEventListener("click", () =>{
     nextMusic();
@@ -80,15 +105,21 @@ repeatBtn.addEventListener("click", () =>{
     Btnrepeat.classList.toggle("clicked"); // Toggle the 'clicked' class
 })
 
+isAleatorio.addEventListener("click",() =>{
+    btnShuffle.classList.toggle("clickedShuffle")
+})
+
 playerHeart.addEventListener("click", () =>{
     if (pHeart.classList.contains("fa-regular")) {
         pHeart.classList.remove("fa-regular");
         pHeart.classList.add("fa-solid");
         pHeart.classList.add("clickHeart");
+        // adicionar no local storage
     } else {
         pHeart.classList.remove("fa-solid");
         pHeart.classList.remove("clickHeart");
         pHeart.classList.add("fa-regular");
+        // remover do local storage
     }
 })
 
@@ -109,7 +140,7 @@ song.ontimeupdate = (e) =>{
 song.addEventListener("loadeddata",()=>{
     let musicDuration = document.getElementById("max-duration");
     let songDuration = song.duration;
-    console.log(songDuration);
+    // console.log(songDuration);
     let totalMin = Math.floor(songDuration/60);
     let totalSec = Math.floor(songDuration % 60);
     if(totalSec < 10){
@@ -117,6 +148,12 @@ song.addEventListener("loadeddata",()=>{
     }
     musicDuration.innerText = `${totalMin}:${totalSec}`
 });
+
+song.addEventListener('ended', () =>{
+    musicIndex++;
+    loadMusic(musicIndex);
+    song.play();
+})
 
 
 progressArea.addEventListener("click", (e)=>{
@@ -127,3 +164,21 @@ progressArea.addEventListener("click", (e)=>{
     playMusic();
 })
 
+// progressAreaVolume.addEventListener("click", (e)=>{
+//     let progressWidth = progressAreaVolume.clientWidth;
+//     let clickedOffsetX = e.offsetX;
+//     let songVolume = 1;
+//     song.volume = (clickedOffsetX / progressWidth) * songVolume;
+    
+// })
+
+function setVolume() {
+    song.volume = volumeControl.value;
+    // progressBarVolume.style.width = volumeControl.value
+  }
+
+// Event listener for volume control
+volumeControl.addEventListener('input', setVolume);
+
+// const musicFavorite = allMusic.filter((x) => x.id === 5)
+// localStorage.setItem('favorits', musicFavorite)

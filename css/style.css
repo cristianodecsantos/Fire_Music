@@ -55,7 +55,8 @@ html,body{height: 100%;}
 }
 
 .sidebar_menu :hover{
-    color: rgba(255, 110, 13, 0.61);
+    cursor: pointer;
+    color: rgb(246, 194, 123);
 }
 
 .sidebar_logo img{
@@ -92,12 +93,11 @@ html,body{height: 100%;}
     font-size: 14px;
 }
 
-.sidebar_menu_item button{
+.sidebar_menu_item {
     font-weight: bolder;
     font-size: 16px;
     padding: 0 10px;
     box-sizing: border-box;
-    background: none;
 }
 
 .sidebar_menu_item img{
@@ -199,11 +199,11 @@ html,body{height: 100%;}
   }
   
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(230, 97, 9);
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    border: 1px solid #707070;
+    width: 40%;
 }
   
 #close-modal {
@@ -212,12 +212,50 @@ html,body{height: 100%;}
     font-size: 28px;
     font-weight: bold;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
 }
 
-#open-modal {
-    background: white;
+.modal-content form {
+    display: flex;
+    justify-content: space-around;
 }
+
+.modal-content h2 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    font-weight: 400;
+    margin: auto;
+    padding: 8% 40px;
+    color: #fff;
+}
+
+.modal-content form{
+    width:  70%;
+    margin: auto;
+    height: 50px;
+}
+
+.modal-content form #add-song {
+    font-size: 20px;
+    width: 180px;
+}
+
+.modal-content form #delete-song {
+    font-size: 20px;
+    width: 150px;
+}
+
+.modal-content form #submit {
+    font-size: 20px;
+    width: 150px;
+}
+
+
+
+
+
 
 
 

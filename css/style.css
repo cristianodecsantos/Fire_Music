@@ -168,7 +168,10 @@ html,body{height: 100%;}
     margin: 8px 0px;
 }
 
-
+.mudarTela{
+    text-decoration: none;
+    color: inherit;
+}
 
 @media screen and (max-width: 1700px){
     .main_col{

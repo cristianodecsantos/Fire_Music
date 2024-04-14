@@ -1,4 +1,5 @@
 import allMusic from "./all-music.js";
+
 let progress = document.getElementById('progress')
 let song = document.getElementById('song')
 let ctrlIcon = document.getElementById('ctrlIcon')
@@ -38,7 +39,7 @@ function loadMusic(indexNumb){
     song.innerHTML = `<source>`
     musicName.innerText = allMusic[indexNumb -1].name;
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `img/${allMusic[5 - 1].img}.jpeg`
+    musicImg.src = `img/${allMusic[indexNumb - 1].img}.jpeg`
     song.innerHTML=  `<source src="musicas/${allMusic[indexNumb - 1].src}.mp3" type="audio/mpeg">`
     song.load()
     console.log(musicIndex)

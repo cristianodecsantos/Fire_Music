@@ -59,11 +59,12 @@ body, html {
     top: 10px;
     font-size: larger;
 }
-.logo {
+.logoArtist {
     position: relative;
-    top: -50px;
+    top: -30px;
     left: 20px;
     padding: 10px; /*Adiciona algum espaço ao redor da imagem */
+    width: 7%;
 }
 
 .lateral{
@@ -74,7 +75,7 @@ body, html {
     width: 800px;
     font-size: 20px;
     font-weight: bold;
-    top: 45px;
+    top: 55px;
     left: 170px;
     /* padding: 10px; Adiciona algum espaço ao redor do elemento */
 }

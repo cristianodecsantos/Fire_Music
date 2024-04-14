@@ -33,6 +33,8 @@ i{
 i:hover{
     color: var(--primary-color);
 }
+
+
 .song-bar {
     position: absolute;
     left: var(--padding);

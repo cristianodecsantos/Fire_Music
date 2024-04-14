@@ -1,6 +1,6 @@
 window.onload = function(){
     var artist = document.querySelector(".artist").innerText;
-    
+    console.log(artist)
     let musica = document.getElementById("nomeMusica")
     
     var song   = musica.innerText;

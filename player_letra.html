@@ -8,10 +8,10 @@
     <script src="https://kit.fontawesome.com/858c5fc19e.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/letra_player.css"> -->
-    <!-- <script src="js/player.js" type="module"></script> -->
+    <link rel="stylesheet" href="css/letra_player.css">
+    <script src="js/player.js" type="module"></script>
     
-    <!-- <link rel="stylesheet" href="css/audio2.css"> -->
+    <!-- <link rel="stylesheet" href="css/audio2.css">  -->
 </head>
 <body>
     
@@ -33,7 +33,61 @@
                 
             </div>
         </div>
-        
+        <div class="player">
+            <!-- início player spotify -->
+        <div class="music-player">
+        <div class="song-bar">
+            <div class="song-infos">
+                <div class="image-container">
+                    <img id="img-song" src="https://d2y6mqrpjbqoe6.cloudfront.net/image/upload/f_auto,q_auto/media/library-400/216_636967437355378335Your_Lie_Small_hq.jpg" alt="" />
+                </div>
+                <div class="song-description">
+                    <p class="title" id="nomeMusica">
+                    </p>
+                    <p class="artist"></p>
+                </div>
+            </div>
+            <div class="icons">
+                <i class="fa-regular fa-heart pHeart" id="playerHeart"></i>
+                <i class="fa-solid fa-compress"></i>
+            </div>
+        </div>
+        <div class="progress-controller">
+            <div class="control-buttons">
+                <i class="fa-solid fa-shuffle cShuffle" id="shuffle"></i>
+                <div><i class="fa-solid fa-backward-step" id="prev"></i></div>
+                <div id="play-pause"><i class="fa-solid fa-play" id="ctrlIcon"></i></div>
+                <!-- <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrlIcon"></i></div> -->
+                <div><i class="fa-solid fa-forward-step" id="next"></i></div>
+                <div><i class="fa-solid fa-rotate-left btnRepeat" id="repeat"></i></div>
+            </div>
+            <div class="progress-container">
+                <span id="current-time"></span>
+                <div class="progress-bar">
+                    <div class="progress">
+                        <audio loop class="controls_audio" id="song">
+                            <!-- <source src="musicas/01-tres-coracoes.mp3" type="audio/mpeg"> -->
+                        </audio>
+                    </div>
+                    <!-- <input type="range" value="0" min="0" id="progress"> -->
+                </div>
+                <span id="max-duration"></span>
+            </div>
+        </div>
+        <div class="other-features">
+            <i class="fas fa-list-ul"></i>
+            <div class="volume-bar">
+                
+                <i class="fas fa-volume-down"></i>
+                <div class="progress-barVolume">
+                    <div class="progressVolume">
+                        <input  id="volumeControl" type="range" min="0" max="1" step="0.01" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
     </div>
     <script src="js/api_vagalume.js" type="module"></script>
     <script src="js/all-music.js" type="module"></script>

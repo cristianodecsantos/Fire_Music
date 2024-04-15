@@ -84,3 +84,8 @@ img{
     border-radius: 50%;
     width: 5%;
 }
+
+.mudarTela{
+    text-decoration: none;
+    color: inherit;
+}

@@ -256,7 +256,28 @@ html,body{height: 100%;}
 }
 
 
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#searchResults {
+    list-style-type: none;
+    padding: 0;
+    height: 100px;
+    color: #fff;
+}
+#searchResults li {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    display: none;
+    color: #fff;
+}
 
+/* .listaPesquisa{
+    color: #fff;
+} */
 
 
 

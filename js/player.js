@@ -42,8 +42,8 @@ function loadMusic(indexNumb){
     musicImg.src = `img/${allMusic[indexNumb - 1].img}.jpeg`
     song.innerHTML=  `<source src="musicas/${allMusic[indexNumb - 1].src}.mp3" type="audio/mpeg">`
     song.load()
-    console.log(musicIndex)
-    console.log(indexNumb)
+    // console.log(musicIndex)
+    // console.log(indexNumb)
 }
 
 

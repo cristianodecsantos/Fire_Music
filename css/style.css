@@ -127,9 +127,9 @@ html,body{height: 100%;}
 .main{
     width: calc(100% - 250px);
     background-color: black;
-    height: 100%;
+    height: 77vh;
     float: left;
-    padding: 15px 50px;
+    padding: 10px 50px;
     overflow-y: auto;
 }
 
@@ -145,8 +145,20 @@ html,body{height: 100%;}
     padding-bottom: 200px;
 }
 
-.main_title h2{
-    color: rgba(255, 110, 13, 0.61);
+.main_title{
+    padding-top: 10px;
+    display: flex;
+ 
+}
+
+.mButton, .lButton{
+    width: 120px;
+    height: 45px;
+    margin-left: 10px;
+    color: white;
+    background-color:  rgba(255, 150, 13, 0.61);
+    border: 0.2em solid white;
+    border-radius: 4%;
 }
 
 .main_col{
@@ -168,7 +180,10 @@ html,body{height: 100%;}
     margin: 8px 0px;
 }
 
-
+.mudarTela{
+    text-decoration: none;
+    color: inherit;
+}
 
 @media screen and (max-width: 1700px){
     .main_col{
@@ -253,7 +268,41 @@ html,body{height: 100%;}
 }
 
 
+#searchInput {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+#searchResults {
+    list-style-type: none;
+    padding: 0;
+    height: 100px;
+    color: #fff;
+}
+#searchResults li {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    display: none;
+    color: #fff;
+}
 
+.searchResultados{
+    color: #fff;
+}
+.ajuste{
+    display: flex;
+    height: 20px;
+}
+
+.seta{
+    padding-top: 3px;
+    padding-left: 20px;
+}
+
+/* .listaPesquisa{
+    color: #fff;
+} */
 
 
 

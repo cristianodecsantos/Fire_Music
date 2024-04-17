@@ -15,7 +15,7 @@ body {
 .music-player {
     --primary-color: #ddd;
     --secondary-color: #999;
-    --green-color: #2d5;
+    --green-color: rgba(241, 121, 41, 0.95);
     --padding: 1em;
     background-color: #111;
     display: flex;
@@ -119,7 +119,7 @@ i:hover{
 }
 
 .pHeart.clickHeart{
-    color: #2d5;
+    color: rgba(241, 121, 41, 0.95);
 }
 
 .progress-container{
@@ -164,42 +164,40 @@ i:hover{
     gap: 1em;
 }
 
-.progress-barVolume{
-    height: 4px;
-    border-radius: 10px;
-    width: 30%;
-    background-color: #ccc4;
-}
+
+
 .progressVolume{
+    -webkit-appearance: none;
     position: relative;
-    
-    height: 100%;
-    width: 30%;
+    /* outline: none; */
+    overflow: hidden;
+    height: 50%;
+    width: 100%;
     border-radius: 10px;
     background-color: var(--secondary-color);
+    
 }
-.progress-barVolume:hover .progressVolume{
-    background-color: var(--green-color);
-}
-.progress-barVolume:hover .progressVolume::after{
-    content: "";
-    position: absolute;
-    --size: 1em;
-    width: var(--size);
-    height: var(--size);
-    right: 0;
+
+.progressVolume::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: white ;
+    cursor: pointer;
     border-radius: 50%;
-    background-color: var(--primary-color);
-    transform: translate(50%, calc(2px - 50%));
+    /* color: #00ffc4; */
+    box-shadow: -300px 0 0 300px rgba(255, 110, 13, 0.95);
 }
+
 .volume-bar{
     display: flex;
     align-items: center;
     gap: .7em;
 }
-.volume-bar .progress-barVolume{
+/* .volume-bar .progress-barVolume{
     width: 8em;
-}
-.volume-bar .progress-barVolume:hover .progressVolume::after{
+} */
+/* .volume-bar .progress-barVolume:hover .progressVolume::after{
     --size: .8em;
-}
+} */
+

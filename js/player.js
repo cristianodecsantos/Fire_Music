@@ -23,7 +23,7 @@ let isAleatorio = document.getElementById("shuffle")
 let btnShuffle = document.querySelector(".cShuffle")
 const volumeControl = document.getElementById('volumeControl');
 let playLista = document.querySelector(".seta")
-const likedSongs = [];
+// const likedSongs = [];
 let musicIndex = Math.floor((Math.random()) * allMusic.length);
 
 
@@ -38,32 +38,85 @@ window.addEventListener("load", () =>{
     pHeart.addEventListener("click", () => {
         // setTimeout(1000)
         if(pHeart.classList.contains('fa-solid')){
-            const artistInput = document.querySelector(".artist");
-            const songInput = document.querySelector(".title");
-            const artistName = artistInput.innerText;
-            const songName = songInput.innerText;
-    
-            if (artistName !== '' && songName !== '') {
-                likedSongs.push({ artist: artistName, song: songName });
-                // displayLikedSongs();
-                artistInput.value = '';
-                songInput.value = '';
-            }
-            console.log(likedSongs)
+            likeSong()
         } else if(pHeart.classList.contains('fa-regular')){
-            const songRemove = document.querySelector(".title").innerText;
-            const removeIndex = likedSongs.findIndex(
-                (song1) => song1.name === songRemove // Find index based on song name
-              );
-              console.log(removeIndex)
-              if (removeIndex === -1) {
-                likedSongs.splice(removeIndex, 1); // Remove element at the index
-              }
-            console.log(likedSongs)
+            const songName = musicName.innerText;
+            const artistName = musicArtist.innerText;
+            unlikeSong(songName, artistName);
         }
         
     })
 
+    function likeSong() {
+        const songName = musicName.innerText;
+        const artistName = musicArtist.innerText;
+    
+        // if (!songName || !artistName) {
+        //     alert('Please enter both song and artist names.');
+        //     return;
+        // }
+    
+        // Retrieve liked songs from local storage or initialize an empty array
+        let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+    
+        // Check if the song is already liked
+        const isLiked = likedSongs.some(song => song.name === songName && song.artist === artistName);
+    
+        if (!isLiked) {
+            // Add the song to the liked songs array
+            likedSongs.push({ name: songName, artist: artistName });
+            localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
+        } else {
+            // Remove the song from the liked songs array if already liked (unlike)
+            likedSongs = likedSongs.filter(song => !(song.name === songName && song.artist === artistName));
+            localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
+        }
+    
+        // Update the liked songs list on the page - quando clicar no botão de música curtida mostra esse código
+        // displayLikedSongs();
+    }
+
+    function unlikeSong(songName, artistName) {
+        // const songName = musicName.innerText;
+        // const artistName = musicArtist.innerText;
+        let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        
+        const index = getIndexByNameAndArtist(likedSongs, songName, artistName); // Get the index
+        if (index !== -1) {
+            likedSongs.splice(index, 1); // Remove the song at the specified index
+            localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
+        // displayLikedSongs(); // Update the liked songs list on the page
+    }
+    }
+
+    function alreadyLiked() {
+        const songName = musicName.innerText;
+        const artistName = musicArtist.innerText;
+        let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        let index = getIndexByNameAndArtist(likedSongs, songName, artistName);
+        console.log(index)
+        if (likedSongs[index].name === songName && likedSongs[index].artist === artistName) {
+            pHeart.classList.remove('fa-regular');
+            pHeart.classList.add('fa-solid');
+            pHeart.classList.add('pHeart')
+            pHeart.classList.add('clickHeart')
+            
+        }
+    }
+
+    song.addEventListener("loadeddata",()=>{
+        alreadyLiked();
+    })
+
+    // Function to get the index of a song by its name and artist name
+    function getIndexByNameAndArtist(likedSongs, songName, artistName) {
+        for (let i = 0; i < likedSongs.length; i++) {
+            if (likedSongs[i].name === songName && likedSongs[i].artist === artistName) {
+                return i; // Return the index if the song is found
+            }
+        }
+        return -1; // Return -1 if the song is not found
+    }
     function prevMusic(){
         if(btnShuffle.classList.contains("clickedShuffle")){
             musicIndex = Math.floor((Math.random()) * allMusic.length);
@@ -74,20 +127,25 @@ window.addEventListener("load", () =>{
         loadMusic(musicIndex);
         playMusic();
     
-        const songToCheck = {name: musicName.innerText, artist: musicArtist.innerText}; // Replace with the song object to check
-        console.log(songToCheck)
-        const foundSong = likedSongs.find((song) => {
-        // Check if the song matches the criteria
-        return song.name === songToCheck.name && song.artist === songToCheck.artist;
-        });
-    
-        if (foundSong) {
-        console.log("Song found:", foundSong);
-        } else {
-        console.log("Song not found:", songToCheck);
+        const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        if (likedSongs != []){
+            const foundSong =  likedSongs.some((song) => { return song.name === musicName.innerText && song.artist === musicArtist.innerText })
+            if (foundSong) {
+            console.log("Song found:", foundSong);
+            pHeart.classList.remove('fa-regular')
+            pHeart.classList.add('fa-solid')
+            } else {
+            // console.log("Song not found:", songToCheck);
+            pHeart.classList.remove('fa-solid')
+            pHeart.classList.add('fa-regular')
+            pHeart.classList.remove('clickHeart')
+            }
         }
+        
     }
     
+    
+
     function nextMusic(){
         if(btnShuffle.classList.contains("clickedShuffle")){
             musicIndex = Math.floor((Math.random()) * allMusic.length);
@@ -96,11 +154,25 @@ window.addEventListener("load", () =>{
         musicIndex > allMusic.length ? musicIndex = 1 : musicIndex = musicIndex;
         loadMusic(musicIndex);
         playMusic();
+
+        
+        const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        const foundSong =  likedSongs.some((song) => { return song.name === musicName.innerText && song.artist === musicArtist.innerText })
+        if (foundSong) {
+            console.log("Song found:", foundSong);
+            pHeart.classList.remove('fa-regular')
+            pHeart.classList.add('fa-solid')
+        } else {
+        // console.log("Song not found:", songToCheck);
+            pHeart.classList.remove('fa-solid')
+            pHeart.classList.add('fa-regular')
+            pHeart.classList.remove('clickHeart')
+        }
     }
 
     prevBtn.addEventListener("click", () => {
         prevMusic();
-        console.log(musicIndex)
+        // console.log(musicIndex)
     })
     nextBtn.addEventListener("click", () =>{
         nextMusic();
@@ -240,3 +312,22 @@ volumeControl.addEventListener('input', setVolume);
 
 // const musicFavorite = allMusic.filter((x) => x.id === 5)
 // localStorage.setItem('favorits', musicFavorite)
+
+
+// function displayLikedSongs() {
+//     const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+//     const likedSongsList = document.getElementById('likedSongs');
+
+//     // Clear the previous list of liked songs
+//     likedSongsList.innerHTML = '';
+
+//     // Populate the list with the current liked songs
+//     likedSongs.forEach(song => {
+//         const listItem = document.createElement('li');
+//         listItem.textContent = `${song.name} - ${song.artist}`;
+//         likedSongsList.appendChild(listItem);
+
+//         // Add event listener to allow unlike on click
+//         listItem.addEventListener('click', () => unlikeSong(song));
+//     });
+// }

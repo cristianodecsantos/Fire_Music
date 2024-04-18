@@ -280,9 +280,9 @@ html,body{height: 100%;}
     color: #fff;
 }
 #searchResults li {
-    padding: 5px;
+    padding: 8px;
     border: 1px solid #ccc;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
     display: none;
     color: #fff;
 }
@@ -292,7 +292,17 @@ html,body{height: 100%;}
 }
 .ajuste{
     display: flex;
-    height: 20px;
+    height: 40px;
+    
+}
+
+.ajustResultList{
+    padding-left: 10px;
+}
+
+.resultList:hover{
+    cursor: pointer;
+    color: rgb(230, 125, 50);
 }
 
 .seta{
@@ -336,6 +346,9 @@ html,body{height: 100%;}
     color: #fff;
 } */
 
+.paddingLeft{
+    padding-left: 10px;
+}
 
 
 

@@ -1,15 +1,16 @@
-window.onload = function(){
+const mudarTela = document.querySelector(".mudarTela");
+let prevBtn = document.querySelector("#prev");
+let nextBtn = document.querySelector("#next");
+
+function letraMusica(){
     var artist = document.querySelector(".artist").innerText;
-    console.log(artist)
-    let musica = document.getElementById("nomeMusica")
-    
+    // console.log(artist)
+    let musica = document.querySelector(".title")
+    let mainArea = document.querySelector(".main")
     var song   = musica.innerText;
     const musicaFormatado = song.replace(/ /g, "%20");
-    
-    let container = document.querySelector(".infos")
-    let imagem = document.querySelector(".logoArtist")
-    let nomeArtist = document.querySelector(".artist-name")
-    let letra = document.querySelector(".containerLetra")
+    console.log(musicaFormatado)
+    // let container = document.querySelector(".infos")
     const key =  '3797b52f5f67c0c6b93bcbd8cb4db9d4';
     
     function capitalizeEachWord(sentence) {
@@ -27,8 +28,7 @@ window.onload = function(){
     }
     
     const artista = capitalizeEachWord(artist);   
-    var artistLower = artista.toLocaleLowerCase()
-    // console.log(artista)
+    console.log(artista)
     
     async function getResults(){
     
@@ -36,13 +36,37 @@ window.onload = function(){
             method: "GET"
         }).then(res => res.json());
     
-        const dataArtista = await fetch(`https://www.vagalume.com.br/${artistLower}/index.js`, {
+        const dataArtista = await fetch(`https://www.vagalume.com.br/${artista.toLocaleLowerCase()}/index.js`, {
             method: "GET"
         }).then(res => res.json());
+        mainArea.innerHTML = `
+        <div class="absolute">
+            <a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </a> 
+        </div>
+        <div class="absoluteInfo">
+            <p class="artist-name">Artista: Nome do Artista</p>
+            <img src="" alt="" class="logoArtist imgArtista">        
+        </div>
+        
+        <div class="container">
+            <div class="infos">
     
-        imagem.setAttribute('src', `https://www.vagalume.com.br` + dataArtista.artist.pic_medium)
+            </div>
+            <div class="info">
+                <div class="containerLetra">
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+        `
+        let nomeArtist = document.querySelector(".artist-name")
+        let imagem = document.querySelector(".logoArtist")
+        let letra = document.querySelector(".containerLetra")
+        console.log(dataArtista.artist.desc)
         nomeArtist.innerText = dataArtista.artist.desc
-    
+        imagem.setAttribute('src', `https://www.vagalume.com.br` + dataArtista.artist.pic_medium)
         const infos = document.createElement('div');
         infos.innerHTML = `
         <aside class="lateral">
@@ -52,16 +76,34 @@ window.onload = function(){
             <p>Rank Vagalume: ${dataArtista.artist.rank.pos}</p>
             <p>Último albúm: ${dataArtista.artist.albums.item[0].desc}</p>
         </aside>
-        ` 
-        container.appendChild(infos)
+        `
+        
+        
+        mainArea.appendChild(infos)
         letra.innerText = dataLetra.mus[0].text
-    }   
-    getResults();       
+    }
+    getResults();
 }
 
-// // file1.js
-// export default function resultados() {
-//     // Function implementation
-//     getResults()
-//   };
+mudarTela.addEventListener("click", () =>{    
+    letraMusica();
+})
+
+prevBtn.addEventListener("click", () => {
+    let song = document.getElementById('song')
+    song.addEventListener("loadeddata",()=>{
+        letraMusica();
+    })
+    
+    // console.log(musicIndex)
+})
+nextBtn.addEventListener("click", () =>{
+    let song = document.getElementById('song')
+    song.addEventListener("loadeddata",()=>{
+        letraMusica();
+    })
+})
+
+
+
   

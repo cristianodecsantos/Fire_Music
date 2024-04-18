@@ -138,7 +138,7 @@ window.addEventListener("load", () =>{
             listItem.classList.add('playCurtida')
             
             listItem.id = "idCurtida";
-            listItem.innerHTML = `<p class="single-song">${song.name}</p> <p>-</p> <p>${song.artist}</p>`;
+            listItem.innerHTML = `<p class="single-song paddingLeft">${song.name}</p> <p class="paddingLeft">-</p> <p class="paddingLeft">${song.artist}</p>`;
             divLista.appendChild(listItem);
 
             // // Add event listener to allow unlike on click

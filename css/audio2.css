@@ -92,12 +92,15 @@ i:hover{
     align-items: center;
     gap: 1.5em;
     color: var(--secondary-color);
+    
 }
 .control-buttons{
     display: flex;
     align-items: center;
     gap: 2em;
+    cursor: pointer;
 }
+
 .play-pause{
     display: inline-block;
     padding: 1em;
@@ -134,6 +137,7 @@ i:hover{
     border-radius: 10px;
     width: 30%;
     background-color: #ccc4;
+    cursor: pointer;
 }
 .progress{
     position: relative;
@@ -193,11 +197,7 @@ i:hover{
     display: flex;
     align-items: center;
     gap: .7em;
+    cursor: pointer;
 }
-/* .volume-bar .progress-barVolume{
-    width: 8em;
-} */
-/* .volume-bar .progress-barVolume:hover .progressVolume::after{
-    --size: .8em;
-} */
+
 

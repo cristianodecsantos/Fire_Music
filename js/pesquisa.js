@@ -1,17 +1,59 @@
 import allMusic from "./all-music.js";
-import { loadMusic } from "./player.js";
+import { loadMusic, playMusic } from "./player.js";
 // import { playMusic } from './player.js';
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
-let playLista = document.querySelector(".seta")
 const mButton = document.querySelector(".mButton")
 const mLetra = document.querySelector(".lButton")
+const resultado = document.getElementById("resultSearch");
 const items = allMusic;
 let i = 0
 
+let song = document.getElementById('song')
 
-mButton.addEventListener("click", ()=>{
-    searchResults.innerHTML = ''
+// function handleClick() {
+//     alert("Button clicked!");
+// }
+
+// song.addEventListener("loadeddata",()=>{
+//     var myButton = mButton;
+//     myButton.onclick = msButton();
+// })
+
+// song.addEventListener("loadeddata",()=>{
+//     var myButton = mLetra;
+//     myButton.onclick = msLetra();
+// })
+
+// document.addEventListener("DOMContentLoaded", function() {
+    
+// });
+
+// document.addEventListener("DOMContentLoaded", function() {
+    
+// });
+
+function playFromSearchMusics(){
+    
+    let playLiked = document.getElementById("searchResults");
+
+    playLiked.addEventListener("click", (e) =>{
+        if(e.target.classList.contains("resultList")){
+            const indexNum = allMusic.findIndex((item, index) =>{
+                if(item.name === e.target.innerText ){
+                    return true;
+                }
+                
+            })
+            loadMusic(indexNum + 1);
+            playMusic();
+
+        }})
+}
+
+
+mButton.addEventListener("click", () => {
+    resultado.innerHTML = ''
     function filterItems(query) {
         return items.filter(items => items.name.toLowerCase().includes(query.toLowerCase()));
     }
@@ -21,48 +63,36 @@ mButton.addEventListener("click", ()=>{
         results.forEach(result => {
             i = 1
             const li = document.createElement('li');
+            li.classList.add("ajuste")
             // li.textContent = `${result.name} - Artista: ${result.artist}`;
             li.innerHTML = `
-                <span class="ajuste">
-                <p id="ajuste${i}">${result.name} - Artista: ${result.artist}</p>
-                <i class="fa-solid fa-play seta"></i>
-                </span>`
+                <p class="resultList ajustResultList">${result.name}</p> <p class="ajustResultList">-</p> <p class="ajustResultList"> Artista: ${result.artist}</p>
+                `
             searchResults.appendChild(li);
-            li.style.display = "block";
+            resultado.appendChild(searchResults);
+            li.style.display = "flex";
             i++;
         });
     }
-    
-    searchInput.addEventListener('input', () => {
-        searchResults.innerHTML = '';
-        const query = searchInput.value.trim();
-        if (query !== '') {
-            const results = filterItems(query);
-            displayResults(results);
-        } else {
-            searchResults.innerHTML = '';
-        }
+    const query = searchInput.value.trim();
+    const results = filterItems(query);
+    displayResults(results);  
+    playFromSearchMusics();
+
+});
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim();
+    if (query !== '') { 
+        "ok"     
+    } else {
+        resultado.innerHTML = '';
+    }      
     });
 
-    // window.addEventListener("load", () =>{
-    // playLista.addEventListener("click", () => {
-        
-    //     const songInput = document.getElementById("");
-    //     const songName = songInput.innerText;
-    //     for (var i = 0; i < allMusic.length; i++) {
-    //         if (dados[i].name === songName) {
-    //             musica = dados[i].id;
-    //         }
-    //     }
-    //     ; // Retorna null se o nome não for encontrado
-        
-    //     return loadMusic(musica);
-    // })
-    // })
-})
 
-mLetra.addEventListener("click", () =>{
-    
+mLetra.addEventListener("click",() =>{
+    searchResults.innerHTML = ''
     // const form = document.getElementById('form')
     const search = document.getElementById('searchInput')
     const result = document.getElementById('resultSearch')
@@ -191,3 +221,36 @@ mLetra.addEventListener("click", () =>{
         
     })
 })
+
+// let isButton1CallingFirstFunction = true;
+// let isButton2CallingFirstFunction = true;
+
+// // Function to toggle between the functions for button 1
+// function toggleFunctionsForButton1() {
+//     if (isButton1CallingFirstFunction) {
+//         msButton();
+//     } else {
+//         msLetra();
+//     }
+    
+//     // Toggle the flag for the next click
+//     isButton1CallingFirstFunction = !isButton1CallingFirstFunction;
+// }
+
+// // Function to toggle between the functions for button 2
+// function toggleFunctionsForButton2() {
+//     if (isButton2CallingFirstFunction) {
+//         msButton();
+//     } else {
+//         msLetra();
+//     }
+    
+//     // Toggle the flag for the next click
+//     isButton2CallingFirstFunction = !isButton2CallingFirstFunction;
+// }
+
+// // Add event listener to button 1
+// mButton.addEventListener("click", toggleFunctionsForButton1);
+
+// // Add event listener to button 2
+// mLetra.addEventListener("click", toggleFunctionsForButton2);

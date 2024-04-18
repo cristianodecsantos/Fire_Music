@@ -113,3 +113,26 @@
     border-radius: 8px;
     background-color: white;
 }
+
+.ajustaListaBusca{
+    display: flex; 
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border:solid 1px white; 
+    width: 400px;
+    justify-content: center;
+}
+
+.openModal{
+    display: block;
+}
+.abrirModal{
+    /* margin-left: 200px; */
+    padding-left: 10px;
+}
+
+.custom-modal-lg{
+    max-width: 1000px;
+}

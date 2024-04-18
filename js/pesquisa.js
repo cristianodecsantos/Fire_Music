@@ -9,6 +9,7 @@ const mLetra = document.querySelector(".lButton")
 const items = allMusic;
 let i = 0
 
+
 mButton.addEventListener("click", ()=>{
     searchResults.innerHTML = ''
     function filterItems(query) {
@@ -65,6 +66,7 @@ mLetra.addEventListener("click", () =>{
     // const form = document.getElementById('form')
     const search = document.getElementById('searchInput')
     const result = document.getElementById('resultSearch')
+    const modalLetra = document.getElementById('modalLetra')
     
     /// api URL ///
     const apiURL = 'https://api.lyrics.ovh';
@@ -102,16 +104,26 @@ mLetra.addEventListener("click", () =>{
        
         <ul class="searchResultados">
           ${data.data
-            .map(song=> `<li>
+            .map(song=> `<li class="ajustaListaBusca">
                         <div>
                             <strong>${song.artist.name}</strong> -${song.title} 
                         </div>
-                        <span data-artist="${song.artist.name}" data-songtitle="${song.title}"> get lyrics</span>
+                        <a id="openModal" class="abrirModal" data-artist="${song.artist.name}" data-songtitle="${song.title}" class="btn " data-bs-toggle="modal" href="#showModal" role="button">get Lyrics</a>
+                        
                     </li>`
             )
             .join('')}
         </ul>
       `;    
+        // const openModal = document.getElementById('openModal');
+        
+        // const modal = document.getElementById('showModal');
+
+        // openModal.addEventListener('click', () => {
+        //     modal.style.display = 'block';
+        // });
+        
+        
     
     }
     
@@ -121,7 +133,7 @@ mLetra.addEventListener("click", () =>{
         const clickedElement = e.target;
     
         //checking clicked elemet is button or not
-        if (clickedElement.tagName === 'SPAN'){
+        if (clickedElement.tagName === 'A'){
             const artist = clickedElement.getAttribute('data-artist');
             const songTitle = clickedElement.getAttribute('data-songtitle');
             
@@ -136,12 +148,33 @@ mLetra.addEventListener("click", () =>{
     
         const data = await res.json();
         const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
-        result.innerHTML = ` 
-        <h4 style="margin-top:3000px; color: black;"><strong>${artist}</strong> - ${songTitle}</h4><ul>
-        <div data-artist="${artist}" data-songtitle="${songTitle}"> get lyrics</div>
-        <p style="margin-top:20px; color= #fff;">${lyrics}</p>
+        modalLetra.innerHTML = ` 
+        <div class="modal openModal" tabindex="-1" id="showModal" >
+        <div class="modal-dialog custom-modal-lg" >
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Letra da Música</h5>
+                <button type="button" class=" btn-close closeModal" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <h4 style="margin-top:10px; color: black;"><strong>${artist}</strong> - ${songTitle}</h4><ul>
+                
+                <p style="margin-top:20px; font-size: large; color= #fff;">${lyrics}</p>
+            </div>
+            
+            </div>
+        </div>
+        </div>
     `    
-        
+        const modal = document.getElementById("showModal")
+        const closeModal = document.querySelector('.closeModal');
+        closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        modalLetra.innerHTML = ''
+    });
+    // <span id="closeModal">&times;</span>
+    // <div data-artist="${artist}" data-songtitle="${songTitle}"> get lyrics</div>
     }
     
     //event listener in get song button

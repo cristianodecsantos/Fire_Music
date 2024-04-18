@@ -1,10 +1,7 @@
 import allMusic from "./all-music.js";
 
-let progress = document.getElementById('progress')
 let song = document.getElementById('song')
 let ctrlIcon = document.getElementById('ctrlIcon')
-const durationDisplay = document.getElementById('max-duration');
-const wrapper = document.querySelector(".music-player");
 let musicImg = document.getElementById("img-song");
 let musicName = document.querySelector(".title");
 let musicArtist = document.querySelector(".artist");
@@ -12,8 +9,6 @@ let prevBtn = document.querySelector("#prev");
 let nextBtn = document.querySelector("#next");
 let progressArea = document.querySelector(".progress-bar");
 let progressBar = document.querySelector(".progress");
-let progressAreaVolume = document.querySelector(".progress-barVolume");
-let progressBarVolume = document.querySelector(".progressVolume");
 let playPauseBtn =document.querySelector("#play-pause")
 let repeatBtn = document.getElementById("repeat")
 let Btnrepeat = document.querySelector(".btnRepeat")
@@ -21,8 +16,10 @@ let playerHeart = document.getElementById("playerHeart")
 let pHeart = document.querySelector(".pHeart")
 let isAleatorio = document.getElementById("shuffle")
 let btnShuffle = document.querySelector(".cShuffle")
+let likeMusic = document.querySelector(".likeMusic");
+
 const volumeControl = document.getElementById('volumeControl');
-let playLista = document.querySelector(".seta")
+
 // const likedSongs = [];
 let musicIndex = Math.floor((Math.random()) * allMusic.length);
 
@@ -33,6 +30,9 @@ let musicIndex = Math.floor((Math.random()) * allMusic.length);
 const isMusicPaused = true;
 
 window.addEventListener("load", () =>{
+
+    
+
     loadMusic(musicIndex);
     
     pHeart.addEventListener("click", () => {
@@ -71,7 +71,12 @@ window.addEventListener("load", () =>{
             likedSongs = likedSongs.filter(song => !(song.name === songName && song.artist === artistName));
             localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
         }
-    
+        const seta = document.getElementById("turnPage")
+        
+        if(seta.classList.contains('arrumarSeta')){
+            listLikedMusic();
+        }
+        
         // Update the liked songs list on the page - quando clicar no botão de música curtida mostra esse código
         // displayLikedSongs();
     }
@@ -86,7 +91,13 @@ window.addEventListener("load", () =>{
             likedSongs.splice(index, 1); // Remove the song at the specified index
             localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
         // displayLikedSongs(); // Update the liked songs list on the page
-    }
+        
+        }
+        const seta = document.getElementById("turnPage")
+        
+        if(seta.classList.contains('arrumarSeta')){
+            listLikedMusic();
+        }
     }
 
     function alreadyLiked() {
@@ -108,6 +119,34 @@ window.addEventListener("load", () =>{
         alreadyLiked();
     })
 
+    likeMusic.addEventListener("click", () => {
+        listLikedMusic()
+    })
+
+    function listLikedMusic (){
+        const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        const likedSongsList = document.querySelector('.main-wraper');
+        
+        // Clear the previous list of liked songs
+        likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
+        let divLista = document.createElement('div')
+        divLista.classList.add('musicaCurtidas')
+        likedSongsList.appendChild(divLista)
+        // Populate the list with the current liked songs
+        likedSongs.forEach(song => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('playCurtida')
+            
+            listItem.id = "idCurtida";
+            listItem.innerHTML = `<p class="single-song">${song.name}</p> <p>-</p> <p>${song.artist}</p>`;
+            divLista.appendChild(listItem);
+
+            // // Add event listener to allow unlike on click
+            // listItem.addEventListener('click', () => unlikeSong(song));
+        });
+        playFromLikedMusics();
+    }
+
     // Function to get the index of a song by its name and artist name
     function getIndexByNameAndArtist(likedSongs, songName, artistName) {
         for (let i = 0; i < likedSongs.length; i++) {
@@ -117,6 +156,29 @@ window.addEventListener("load", () =>{
         }
         return -1; // Return -1 if the song is not found
     }
+
+    // console.log(getIndexByNameAndArtist(allMusic, "Granada","Henrique e Juliano"))
+    
+    // let playLike = document.querySelector(".arrumarSeta");
+    // let idCurtida = document.getElementById("idCurtida")
+
+    function playFromLikedMusics(){
+        let playLiked = document.querySelector(".musicaCurtidas");
+        playLiked.addEventListener("click", (e) =>{
+            if(e.target.classList.contains("single-song")){
+                const indexNum = allMusic.findIndex((item, index) =>{
+                    if(item.name === e.target.innerText ){
+                        return true;
+                    }
+                    
+                })
+                loadMusic(indexNum + 1);
+                playMusic();
+
+            }})
+    }
+
+    
     function prevMusic(){
         if(btnShuffle.classList.contains("clickedShuffle")){
             musicIndex = Math.floor((Math.random()) * allMusic.length);
@@ -314,20 +376,3 @@ volumeControl.addEventListener('input', setVolume);
 // localStorage.setItem('favorits', musicFavorite)
 
 
-// function displayLikedSongs() {
-//     const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
-//     const likedSongsList = document.getElementById('likedSongs');
-
-//     // Clear the previous list of liked songs
-//     likedSongsList.innerHTML = '';
-
-//     // Populate the list with the current liked songs
-//     likedSongs.forEach(song => {
-//         const listItem = document.createElement('li');
-//         listItem.textContent = `${song.name} - ${song.artist}`;
-//         likedSongsList.appendChild(listItem);
-
-//         // Add event listener to allow unlike on click
-//         listItem.addEventListener('click', () => unlikeSong(song));
-//     });
-// }

@@ -300,6 +300,38 @@ html,body{height: 100%;}
     padding-left: 20px;
 }
 
+.arrumarSeta{
+    color: #fff;
+    width: 10px;
+    height: 10px;
+}
+
+.arrowLike{
+    padding-top: 20px;
+    font-size: x-large;
+}
+
+.arrowLike:hover{
+    cursor: pointer;
+    color: rgb(230, 125, 50);
+}
+
+.musicaCurtidas{
+    padding-top: 50px;
+    color: #fff;
+    font-size: 20px;
+}
+.musicaCurtidas li{
+    margin-top: 5px;
+}
+.musicaCurtidas li:hover{
+    cursor: pointer;
+    color: rgb(230, 125, 50);
+}
+
+.playCurtida{
+    display: flex;
+}
 /* .listaPesquisa{
     color: #fff;
 } */

@@ -17,11 +17,11 @@ let pHeart = document.querySelector(".pHeart")
 let isAleatorio = document.getElementById("shuffle")
 let btnShuffle = document.querySelector(".cShuffle")
 let likeMusic = document.querySelector(".likeMusic");
-
+let musicIndex = Math.floor((Math.random()) * allMusic.length);
 const volumeControl = document.getElementById('volumeControl');
 
 // const likedSongs = [];
-let musicIndex = Math.floor((Math.random()) * allMusic.length);
+
 
 
 
@@ -29,11 +29,30 @@ let musicIndex = Math.floor((Math.random()) * allMusic.length);
 // console.log(musicIndex)
 const isMusicPaused = true;
 
-window.addEventListener("load", () =>{
 
+// if(song.classList.contains("classTest")){
+//         "ok"
+// }else{
+//     loadMusic(musicIndex);
+// }
+// document.addEventListener("DOMContentLoaded", ()=>{
+//     loadMusic(musicIndex)
+// })
+window.addEventListener("load", () =>{
     
 
+    // if(song.classList.contains("classTest")){
+    //     musicIndex = getIndexByNameAndArtist(allMusic, musicName.innerText, musicArtist.innerText)
+    // }else{
+    //     // 
+        
+    //     musicIndex = 1
+        
+    // }
     loadMusic(musicIndex);
+
+    
+    
     
     pHeart.addEventListener("click", () => {
         // setTimeout(1000)

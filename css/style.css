@@ -5,7 +5,7 @@
     font-family: "Roboto";
 }
 
-html,body{height: 100%;}
+html,body{height: 100%; }
 
 .login{
     background-color: rgb(172, 82, 22);
@@ -126,8 +126,13 @@ html,body{height: 100%;}
 
 .main{
     width: calc(100% - 250px);
+<<<<<<< HEAD
     /* background-color: black; */
     height: 77vh;
+=======
+    background-color: black;
+    height: 710px;
+>>>>>>> 223bcebf0c26e7881e3e0e4efb30ea8304c2fcde
     float: left;
     padding: 10px 50px;
     overflow-y: auto;
@@ -183,6 +188,11 @@ html,body{height: 100%;}
 .mudarTela{
     text-decoration: none;
     color: inherit;
+}
+
+.mudarTela:hover{
+   color: rgb(230, 97, 9);
+   cursor: pointer;
 }
 
 @media screen and (max-width: 1700px){
@@ -334,10 +344,6 @@ html,body{height: 100%;}
 .musicaCurtidas li{
     margin-top: 5px;
 }
-.musicaCurtidas li:hover{
-    cursor: pointer;
-    color: rgb(230, 125, 50);
-}
 
 .playCurtida{
     display: flex;
@@ -346,6 +352,10 @@ html,body{height: 100%;}
     color: #fff;
 } */
 
+.single-song:hover{
+    cursor: pointer;
+    color: rgb(230, 125, 50);
+}
 .paddingLeft{
     padding-left: 10px;
 }

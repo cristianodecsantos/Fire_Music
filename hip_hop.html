@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/858c5fc19e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/audio2.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/audio.css">
+    <link rel="stylesheet" href="css/card.css">
+    
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+            integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    <title>Fire Music</title>
+</head>
+<body>
+
+    
+    <!-- sidebar -->
+    <div class="sidebar">
+        <!-- sidebar-wraper -->
+        <div class="sidebar-wraper">
+            
+            <!-- sidebar_logo -->
+            <div class="sidebar_logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+            <!-- fim sidebar_logo  -->
+            
+            <!-- sidebar_menu -->
+            <div class="sidebar_menu">
+                <a class="sidebar_menu_selecionado" href="index.html"><i class="fas fa-home"></i>Início</a>
+                <a href="buscar.html" id="open-modal-2"><i class="fas fa-search"></i>Buscar</a>
+                <a href="#"><i class="fas fa-database"></i>Biblioteca</a>
+            </div>
+            <!-- fim sidebar_menu-->
+
+            <!-- sidebar_menu -->
+            <div class="sidebar_menu">
+                <p class="sidebar_menu_title">Playlists</p>
+                <div class="sidebar_menu_item">
+                    <img src="img/m.png" alt="">
+                    <span id="open-modal">Criar Play List</span>
+                        <div id="modal" class="modal">
+                            <div class="modal-content">
+                                <span id="close-modal">&times;</span>
+                                <h2>Criar Play List</h2>
+                                <form id="playlist-form">
+                                <input type="text" id="playlist-name" placeholder="Nome da PlayList">
+                                <button type="button" id="add-song">Adicionar Música</button>
+                                <button type="button" id="delete-song">Excluir Música</button>
+                                <button type="submit" id="submit">Confirmar</button>
+                                </form>
+                            </div>
+                        </div>
+                </div>
+                <div class="sidebar_menu_item">
+                    <img src="img/fogo1.png" alt="">
+                    <span>Músicas Curtidas</span>
+                </div>
+            </div>
+            <!-- fim sidebar_menu-->
+
+            <!-- sidebar_playlists -->
+            <div class="sidebar_playlists">
+                <a href="">Playlist 1</a>
+                <a href="">Playlist 1</a>
+                <a href="">Playlist 1</a>
+                <a href="">Playlist 1</a>
+                <a href="">Playlist 1</a>
+            </div>
+            
+            <!-- fim sidebar_playlists-->
+
+        </div>
+        <!-- fim sidebar-wraper -->
+    </div>
+    <!-- fim sidebar -->
+
+    <div class="login">
+        <ul>
+            <li><a href="inscreva-se.html">Inscreva-se</a></li>
+            <li><button><a href="sigin.html">Entrar</a></button></li>
+        </ul>
+    </div>
+
+    <div class="title-card"><h2>Hip Hop</h2></div>
+
+    <div class="card2">      
+      <div class="audio-controls">
+        <h4>505</h4>
+        <audio id="audio1" controls>
+          <source src="musicas/hiphop/chacallsondplayoficial-chacall-sondplay-partplaysson-hip-hop-amor-de-verdade-986e3c4b.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>A Day To Remember</h4>    
+        <audio id="audio2" controls>
+          <source src="musicas/hiphop/DjLarry-young-thug-cut-it-remix-ft-kevin-gates-ot-genesis-f4b89dcc.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Another Brick in the Wall</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/GringoHipHopOficial-04-mais-um-drink-part-hungria-e-chacal.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Back In Black</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/hungriahiphop-hungria-hip-hop-coracao-de-carro-forte-2f606716.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Bad Liar</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/hungriahiphop-pacificadores-a-rua-part-wwwsuamusicacombrdjmixeroficial-djmixeroficial-c3beee4c.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Before I Forget</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/hungriahiphop-tribo-da-periferia-insonia-part-hungria-hip-hop-wwwpalcomp3comdjmixer-djmixeroficial-b39cc0.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Believer</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/hungriahiphop-wwwpalcomp3comdjmixer-djmixeroficial-dfe0c0.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Best of You</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/mcdramarap-infancia-2-1fd12001.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Black</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/hiphop/pacificadoresrap-voandoalto-part-hungria-hip-hop-16660215.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Bow Down</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/rock/Bow Down - I Prevail.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Chop Suey!</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/rock/Chop Suey! - System of a Down.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Come As You Are</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/rock/Come As You Are - Nirvana.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="audio-controls">
+        <h4>Come Out and Play</h4>
+        <audio id="audio3" controls>
+          <source src="musicas/rock/Come Out and Play - The Offspring.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+   
+
+    
+
+    <script src="js/pesquisa.js" type="module"></script>
+    <script src="js/all-music.js" type="module"></script>
+    <script src="js/player.js" type="module"></script>
+    <!-- <script src="js/api_vagalume.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- <script src="js/all.min.js"></script> -->
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/modal.js"></script>
+    <script src="js/add-song.js"></script>
+    <script src="js/card.js"></script>
+    
+</body>
+</html>
+
+
+
+

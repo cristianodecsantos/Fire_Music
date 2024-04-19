@@ -1,0 +1,25 @@
+.title-card{
+  padding-top: 10px;
+  color: rgba(255, 110, 13, 0.61);
+}
+
+.card2 {
+  width: 50%;
+  background-color: rgba(255, 110, 13, 0.61);
+  padding: 30px;
+}
+
+.audio-controls {
+  display: flex;
+  margin: 5px;
+  justify-content:space-between;
+}
+
+h4{
+  margin-top: 16px;
+  margin-left: 20px;
+  padding-right: 30px;
+}
+
+
+

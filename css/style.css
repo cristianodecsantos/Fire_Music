@@ -126,7 +126,7 @@ html,body{height: 100%;}
 
 .main{
     width: calc(100% - 250px);
-    background-color: black;
+    /* background-color: black; */
     height: 77vh;
     float: left;
     padding: 10px 50px;
@@ -348,6 +348,30 @@ html,body{height: 100%;}
 
 .paddingLeft{
     padding-left: 10px;
+}
+
+.title{
+    margin-top: 20px;
+    padding: 20px;
+    color: rgba(255, 110, 13, 0.61);
+}
+
+.cards{
+    display: flex;
+}
+
+.cards img{
+    width: 270px;
+    border-radius: 50px;
+    float: left;
+    padding: 35px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+
+.cards h3{
+    color: rgba(255, 110, 13, 0.61);
+    margin-left: 80px;
 }
 
 

@@ -138,6 +138,147 @@ let allMusic = [
         artist: "Henrique e Juliano",
         img: "henrique_e_juliano",
         src: "20-eu-e-a-saudade"
+    },
+    {
+        id: 21,
+        name: "505",
+        artist: "Arctic Monkeys",
+        img: "rock",
+        src: "21-5-0-5"
+    },
+    {
+        id: 22,
+        name: "A Day To Remember",
+        artist: "The Downfall of Us All",
+        img: "rock",
+        src: "22-The-Downfall-of-Us-All"
+    },
+    {
+        id: 23,
+        name: "Aerials ",
+        artist: "System of a Down",
+        img: "rock",
+        src: "23-System-of-a-Down"
+    },
+    {
+        id: 24,
+        name: "Another Brick in the Wall",
+        artist: "Pink Floyd",
+        img: "rock",
+        src: "24Pink-Floyd"
+    },
+    {
+        id: 25,
+        name: "Back In Black",
+        artist: " AC DC",
+        img: "rock",
+        src: " 25-AC-DC"
+    },
+    
+    {
+        id: 26,
+        name: "sou-nordeste",
+        artist: "aude oficial",
+        img: "mpb",
+        src: "26-aude-oficial"
+    },
+    {
+        id: 27,
+        name: "avohai-",
+        artist: "ze-ramalh",
+        img: "mpb",
+        src: "27-ze-ramalh"
+    },
+    {
+        id: 28,
+        name: "como-nossos-pais",
+        artist: "carla",
+        img: "mpb",
+        src: "28-micarla"
+    },
+    {
+        id: 29,
+        name: "anunciacao",
+        artist: "pedro paulo e matheus",
+        img: "mpb",
+        src: "29-pedro-paulo-e-matheus"
+    },
+    {
+        id: 30,
+        name: "coracao-de-carro-forte",
+        artist: "hungria",
+        img: "hiphop",
+        src: "30-hungria"
+    },
+    {
+        id: 31,
+        name: "pacificadores",
+        artist: "hungria",
+        img: "hiphop",
+        src: "31-hungria"
+    },
+    {
+        id: 32,
+        name: "insonia",
+        artist: "hungria",
+        img: "hiphop",
+        src: "32-hungria"
+    },
+    {
+        id: 33,
+        name: "palco",
+        artist: "hungria",
+        img: "hiphop",
+        src: "33-hungria"
+    },
+    {
+        id: 34,
+        name: "yans",
+        artist: "colio",
+        img: "hiphop",
+        src: "34-colio"
+    },
+    {
+        id: 35,
+        name: "voandoalto",
+        artist: "hungria",
+        img: "hiphop",
+        src: "35-hungria"
+    },
+    {
+        id: 36,
+        name: "inimigos-da-hp",
+        artist: "pericle",
+        img: "pagode",
+        src: "36-pericle"
+    },
+    {
+        id: 37,
+        name: "glamour-da-batucada",
+        artist: "inimigos-da-hp",
+        img: "pagode",
+        src: "37-inimigos-da-hp"
+    },
+    {
+        id: 38,
+        name: "ate-que-durou",
+        artist: "pericles",
+        img: "pagode",
+        src: "38-pericles"
+    },
+    {
+        id: 39,
+        name: "curtindo-a-vida",
+        artist: "-bom-gosto",
+        img: "pagode",
+        src: "39-bom-gosto"
+    },
+    {
+        id: 40,
+        name: "desculpa-perfeita",
+        artist: "pixote",
+        img: "pagode",
+        src: "40-pixote"
     }
 ]
 export default allMusic;

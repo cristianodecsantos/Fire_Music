@@ -1,3 +1,5 @@
+import allMusic from "./all-music.js";
+import { loadMusic} from "./player.js";
 const mudarTela = document.querySelector(".mudarTela");
 let prevBtn = document.querySelector("#prev");
 let nextBtn = document.querySelector("#next");
@@ -49,9 +51,7 @@ function letraMusica(){
         </div>
         
         <div class="container">
-            <div class="infos">
-    
-            </div>
+            
             <div class="info">
                 <div class="containerLetra">
                     
@@ -68,8 +68,9 @@ function letraMusica(){
         nomeArtist.innerText = dataArtista.artist.desc
         imagem.setAttribute('src', `https://www.vagalume.com.br` + dataArtista.artist.pic_medium)
         const infos = document.createElement('div');
+        infos.classList.add("lateral")
         infos.innerHTML = `
-        <aside class="lateral">
+        <aside >
             <p>Genêro Musical: ${dataArtista.artist.genre[0].name}</p>
             <p>Álbum: ${dataLetra.mus[0].alb.name}</p>
             <p>Ano: ${dataLetra.mus[0].alb.year}</p>
@@ -92,7 +93,12 @@ mudarTela.addEventListener("click", () =>{
 prevBtn.addEventListener("click", () => {
     let song = document.getElementById('song')
     song.addEventListener("loadeddata",()=>{
-        letraMusica();
+        const telaAberta = document.querySelector(".artist-name")
+        if(telaAberta){
+            letraMusica();
+        }else{
+            console.log("ok")
+        }
     })
     
     // console.log(musicIndex)
@@ -100,10 +106,47 @@ prevBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () =>{
     let song = document.getElementById('song')
     song.addEventListener("loadeddata",()=>{
-        letraMusica();
+        const telaAberta = document.querySelector(".artist-name")
+        if(telaAberta){
+            letraMusica();
+        }else{
+            console.log("ok")
+        }
+        
     })
 })
 
+const arrowBack = document.querySelector(".arrowAjuste")
+
+arrowBack.addEventListener("click", ()=>{
 
 
-  
+    // let song = document.getElementById('song')
+    // song.classList.add("classTest")
+    let mainArea = document.querySelector(".main")
+    divMainContent = `
+    <div class="main-wraper">
+            <div id="teste" class="main_title">
+                <input type="text" id="searchInput" placeholder="Digite para pesquisar...">
+                <button class="mButton">Buscar Música</button>
+                <button  class="lButton">Buscar Letra</button>
+            </div>
+            <div id="resultSearch">
+                <ul id="searchResults"></ul>
+                
+            </div>
+            <div id="modalLetra">
+
+            </div>
+            
+          <div >                
+              <!-- <div class="main_col">
+                  <img src="img/top50.png" alt="Paradas">
+                  <h3>As 50 mais tocadas</h3>
+              </div> -->   
+          </div>
+        </div>    
+    `
+    mainArea.appendChild(divMainContent)
+    
+})

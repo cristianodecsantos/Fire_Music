@@ -9,7 +9,7 @@ body, html {
 
 .container {
     display: flex;
-    height: 65vh;
+    height: auto;
 }
 
 /* .player {
@@ -22,19 +22,32 @@ body, html {
     
 } */
 
+.divLateral{
+    position: absolute;
+}
 .info {
     
-    width: 1500px;
-    height: 80vh;
-    background-color: #e0e0e0;
+    width: 1000px;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+    overflow: auto;
+    /* scrollbar-gutter: inherit; */
+    scrollbar-width: normal;
+    scrollbar-color: darkgray black;
+    
+}
+
+.info:hover{
+    scrollbar-color: orange black;
 }
 .containerLetra{
-    padding-top: 6px;
+    /* padding-top: 6px; */
     padding-bottom: 5px;
+    color: #fff;
+    font-size: 15px;
+    height: 550px;
     /* overflow-y: auto; */
 }
 
@@ -43,7 +56,7 @@ body, html {
 }
 .absolute{
     /* position: absolute; */
-    top: 5px;
+    /* top: 5px; */
     width: 100%;
     height: 20px;
 }
@@ -51,14 +64,19 @@ body, html {
     /* position: absolute; */
     top: 10px;
     width: 100%;
-    height: 140px;
+    height: 120px;
 }
 
 .arrowAjuste{
     position: relative;
-    left: 20px;
+    left: 5px;
     top: 10px;
-    font-size: larger;
+    font-size: 25px;
+    color: #fff;
+}
+
+.arrowAjuste:hover{
+    color: rgba(255, 110, 13, 0.95)
 }
 .logoArtist {
     position: relative;
@@ -69,21 +87,27 @@ body, html {
 }
 
 .lateral{
+    position: relative;
+    color: #fff;
     width: 300px;
+    top: -450px;
+    font-weight: bold;
+    font-size: 15px;
 }
 .artist-name {
     position: relative;
     width: 800px;
     font-size: 20px;
     font-weight: bold;
-    top: 55px;
-    left: 170px;
+    top: 80px;
+    left: 190px;
+    color: #fff;
     /* padding: 10px; Adiciona algum espaço ao redor do elemento */
 }
 
 .imgArtista{
     border-radius: 50%;
-    width: 5%;
+    width: 10%;
 }
 
 .mudarTela{

@@ -126,10 +126,10 @@ html,body{height: 100%; }
 
 .main{
     width: calc(100% - 250px);
-<<<<<<< HEAD
+
     /* background-color: black; */
     height: 77vh;
-=======
+
     background-color: black;
     height: 710px;
     float: left;

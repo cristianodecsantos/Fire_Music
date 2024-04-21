@@ -4,6 +4,8 @@ const items = allMusic;
 
 let i = 0
 
+
+// Função para tocar música do retorno da busca
 function playFromSearchMusics(){
     
     let playLiked = document.getElementById("searchResults");
@@ -22,7 +24,7 @@ function playFromSearchMusics(){
         }})
 }
 
-
+// Buscar música dentro do arquivo allMusic
 export function mButton(searchResultsF, searchInputF ) {
     console.log("clicado")
     searchResultsF.innerHTML = ``
@@ -55,16 +57,8 @@ export function mButton(searchResultsF, searchInputF ) {
 
 };
 
-// searchInput.addEventListener('input', () => {
-//     const query = searchInput.value.trim();
-//     if (query !== '') { 
-//         "ok"     
-//     } else {
-//         resultado.innerHTML = '';
-//     }      
-//     });
 
-
+// Buscar letra dentro da api lyrics
 export function mLetra(search){
     
     const result = document.getElementById('resultSearch')
@@ -97,10 +91,11 @@ export function mLetra(search){
     function showData(data){
       
         result.innerHTML = `
+        <div id= "modalLetra"></div>
         <ul id="searchResults" class="searchResultados">
           ${data.data
             .map(song=> `<li class="ajustaListaBusca">
-                        <div id= "modalLetra">
+                        <div>
                             <strong>${song.artist.name}</strong> -${song.title} 
                         </div>
                         <a id="openModal" class="abrirModal" data-artist="${song.artist.name}" data-songtitle="${song.title}" class="btn " data-bs-toggle="modal" href="#showModal" role="button">get Lyrics</a>
@@ -148,7 +143,7 @@ export function mLetra(search){
                 
                 <h4 style="margin-top:10px; color: black;"><strong>${artist}</strong> - ${songTitle}</h4><ul>
                 
-                <p style="margin-top:20px; font-size: large; color= #fff;">${lyrics}</p>
+                <p style="margin-top:20px; font-size: large; color: #fff; ">${lyrics}</p>
             </div>
             
             </div>
@@ -163,19 +158,6 @@ export function mLetra(search){
         });
     }
     
-    //event listener in get song button
-    result.addEventListener('click', e=>{
-        const clickedElement = e.target;
-    
-        //checking clicked elemet is button or not
-        if (clickedElement.tagName === 'DIV'){
-            const artist = clickedElement.getAttribute('data-artist');
-            const songTitle = clickedElement.getAttribute('data-songtitle');
-            
-            execute(artist, songTitle);
-        }
-        
-    })
     
 };
 

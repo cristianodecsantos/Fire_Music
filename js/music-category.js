@@ -6,17 +6,22 @@ function cardsMusicType() {
     let musicType = document.querySelector(".cards");
     musicType.addEventListener("click", async (e) => {
         if (e.target.parentElement.classList.contains("ajustCard")) {
+
+            // Pegando texto do parâmetro alt para definir qual categoria foi selecionada
             let innerHTML = e.target.parentElement.innerHTML;
             let tempDiv = document.createElement('div');
             tempDiv.innerHTML = innerHTML;
             let imgElement = tempDiv.querySelector('img');
             let altText = imgElement.alt;
+
+            // Criando tela para adicionar as músicas que atendem ao critério da categoria
             const categorySongsList = document.querySelector('.main-wraper');
             categorySongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
             let divLista = document.createElement('div');
             divLista.classList.add('listMusic');
             categorySongsList.appendChild(divLista);
-
+            
+            // Adicionando na tela todas as músicas que correspondem a categoria do card clicado
             allMusic.forEach(song => {
                 if (song.img == altText) {
                     const listItem = document.createElement('li');

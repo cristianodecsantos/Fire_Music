@@ -3,6 +3,7 @@ const searchButton = document.querySelector(".searchClass")
 
 
 searchButton.addEventListener("click", ()=>{
+    // Adicionando caixa de pesquisa e botões de busca na tela
     const mainArea = document.querySelector(".main")
     mainArea.innerHTML = ''
     mainArea.innerHTML = `
@@ -29,16 +30,20 @@ searchButton.addEventListener("click", ()=>{
     const mButtonS = document.querySelector(".mButton")
     const mLetraS = document.querySelector(".lButton")
 
+    // Chamando a função mButton
     mButtonS.addEventListener("click",()=>{
         const searchResults = document.getElementById('searchResults');
         const searchInput = document.getElementById('searchInput');
         mButton(searchResults, searchInput)
     })
 
+    // Chamando a função mLetra
     mLetraS.addEventListener("click",()=>{
         const searchInput = document.getElementById('searchInput');
         mLetra(searchInput)
     })
+
+    // Limpando a tela quando não houver nada na caixa de pesquisa
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim();

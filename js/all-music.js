@@ -1,3 +1,4 @@
+// Todas músicas disponíveis para o player
 let allMusic = [
     {
         id: 1,

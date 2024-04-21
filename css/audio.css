@@ -42,13 +42,6 @@
     box-shadow: 0 10px 20px rgba(255, 26, 26, 0.22);
 }
 
-/* .controls div:nth-child(2){
-    transform: scale(1.5);
-    background: put orange;
-    color: combine with orange;
-    use this in the big screen player;
-} */
-
 .player{
     width: 100%;
     padding: 20px;

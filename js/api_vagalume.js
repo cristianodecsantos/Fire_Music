@@ -4,14 +4,12 @@ let nextBtn = document.querySelector("#next");
 let likeMusic = document.querySelector(".likeMusic");
 
 function letraMusica(){
+    // Variáveis e definições para fazer busca na API
     var artist = document.querySelector(".artist").innerText;
-    // console.log(artist)
     let musica = document.querySelector(".title")
     let mainArea = document.querySelector(".main")
     var song   = musica.innerText;
     const musicaFormatado = song.replace(/ /g, "%20");
-    // console.log(musicaFormatado)
-    // let container = document.querySelector(".infos")
     const key =  '3797b52f5f67c0c6b93bcbd8cb4db9d4';
     
     function capitalizeEachWord(sentence) {
@@ -31,8 +29,9 @@ function letraMusica(){
     const artista = capitalizeEachWord(artist);   
     console.log(artista)
     
+    // Buscando informações na API do Vagalume
     async function getResults(){
-    
+        
         const dataLetra = await fetch("https://api.vagalume.com.br/search.php"+ "?art=" + artista + "&mus=" + musicaFormatado+ `&extra=alb,artpic,rank` + `&apikey=${key}`, {
             method: "GET"
         }).then(res => res.json());
@@ -40,11 +39,13 @@ function letraMusica(){
         const dataArtista = await fetch(`https://www.vagalume.com.br/${artista.toLocaleLowerCase()}/index.js`, {
             method: "GET"
         }).then(res => res.json());
+
+        // Adicionando o conteúdo na tela conforme a resposta da API
         mainArea.innerHTML=''
         mainArea.innerHTML = `
         <div class="main-wraper">
         <div class="absolute">
-            <div  class="mudarTelaMusica"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </div> 
+            <a  class="mudarTelaMusica" href="index.html"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </a> 
         </div>
         <div class="absoluteInfo">
             <p class="artist-name">Artista: Nome do Artista</p>
@@ -89,68 +90,32 @@ function letraMusica(){
     getResults();
 }
 
+// Chama a função quando clica no ícone de informação
 mudarTela.addEventListener("click", () =>{    
     letraMusica();
 })
 
+// Mudar a letra da música conforme passa música
 prevBtn.addEventListener("click", () => {
     let song = document.getElementById('song')
     song.addEventListener("loadeddata",()=>{
         const telaAberta = document.querySelector(".artist-name")
         if(telaAberta){
             letraMusica();
-        }else{
-            // console.log("ok")
         }
     })
     
     
 })
+
+// Mudar a letra da música conforme passa música
 nextBtn.addEventListener("click", () =>{
     let song = document.getElementById('song')
     song.addEventListener("loadeddata",()=>{
         const telaAberta = document.querySelector(".artist-name")
         if(telaAberta){
             letraMusica();
-        }else{
-            // console.log("ok")
         }
         
     })
 })
-
-const arrowBack = document.querySelector(".mudarTelaMusica")
-if (arrowBack){
-    arrowBack.addEventListener("click", ()=>{
-
-
-    
-        let mainArea = document.querySelector(".main")
-        mainArea.innerHTML = `
-        <div class="main-wraper">
-                <div id="teste" class="main_title">
-                    <input type="text" id="searchInput" placeholder="Digite para pesquisar...">
-                    <button class="mButton">Buscar Música</button>
-                    <button  class="lButton">Buscar Letra</button>
-                </div>
-                <div id="resultSearch">
-                    <ul id="searchResults"></ul>
-                    
-                </div>
-                <div id="modalLetra">
-    
-                </div>
-                
-              <div >                
-                  <!-- <div class="main_col">
-                      <img src="img/top50.png" alt="Paradas">
-                      <h3>As 50 mais tocadas</h3>
-                  </div> -->   
-              </div>
-            </div>    
-        `
-
-        
-    })
-    
-}else{}

@@ -20,13 +20,6 @@ let likeMusic = document.querySelector(".likeMusic");
 let musicIndex = Math.floor((Math.random()) * allMusic.length);
 const volumeControl = document.getElementById('volumeControl');
 
-// const likedSongs = [];
-
-
-
-
-// console.log(allMusic.length)
-// console.log(musicIndex)
 const isMusicPaused = true;
 
 
@@ -40,22 +33,9 @@ const isMusicPaused = true;
 // })
 window.addEventListener("load", () =>{
     
-
-    // if(song.classList.contains("classTest")){
-    //     musicIndex = getIndexByNameAndArtist(allMusic, musicName.innerText, musicArtist.innerText)
-    // }else{
-    //     // 
-        
-    //     musicIndex = 1
-        
-    // }
     loadMusic(musicIndex);
 
-    
-    
-    
     pHeart.addEventListener("click", () => {
-        // setTimeout(1000)
         if(pHeart.classList.contains('fa-solid')){
             likeSong()
         } else if(pHeart.classList.contains('fa-regular')){
@@ -66,14 +46,10 @@ window.addEventListener("load", () =>{
         
     })
 
+    // Função para curtir a música - adiciona no local storage e na tela de músicas curtidas
     function likeSong() {
         const songName = musicName.innerText;
         const artistName = musicArtist.innerText;
-    
-        // if (!songName || !artistName) {
-        //     alert('Please enter both song and artist names.');
-        //     return;
-        // }
     
         // Retrieve liked songs from local storage or initialize an empty array
         let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
@@ -96,21 +72,17 @@ window.addEventListener("load", () =>{
             listLikedMusic();
         }
         
-        // Update the liked songs list on the page - quando clicar no botão de música curtida mostra esse código
-        // displayLikedSongs();
+        
     }
 
+    // Função para descurtir a música - remove do local storage e da tela de músicas curtidas
     function unlikeSong(songName, artistName) {
-        // const songName = musicName.innerText;
-        // const artistName = musicArtist.innerText;
         let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
         
         const index = getIndexByNameAndArtist(likedSongs, songName, artistName); // Get the index
         if (index !== -1) {
             likedSongs.splice(index, 1); // Remove the song at the specified index
-            localStorage.setItem('likedSongs', JSON.stringify(likedSongs));
-        // displayLikedSongs(); // Update the liked songs list on the page
-        
+            localStorage.setItem('likedSongs', JSON.stringify(likedSongs));        
         }
         const seta = document.getElementById("turnPage")
         
@@ -119,6 +91,7 @@ window.addEventListener("load", () =>{
         }
     }
 
+    // Checa se a música já está curtida ou não
     function alreadyLiked() {
         const songName = musicName.innerText;
         const artistName = musicArtist.innerText;
@@ -138,10 +111,12 @@ window.addEventListener("load", () =>{
         alreadyLiked();
     })
 
+    //Mostra as músicas curtidas quando clica no botão
     likeMusic.addEventListener("click", () => {
         listLikedMusic()
     })
 
+    // Mostrar a lista de músicas curtidas
     function listLikedMusic (){
         const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
         
@@ -165,7 +140,7 @@ window.addEventListener("load", () =>{
         playFromLikedMusics();
     }
 
-    // Function to get the index of a song by its name and artist name
+    // Função para pegar o índice de uma música pelo nome da música e do artista
     function getIndexByNameAndArtist(likedSongs, songName, artistName) {
         for (let i = 0; i < likedSongs.length; i++) {
             if (likedSongs[i].name === songName && likedSongs[i].artist === artistName) {
@@ -175,6 +150,7 @@ window.addEventListener("load", () =>{
         return -1; // Return -1 if the song is not found
     }
 
+    // Toca as músicas que estão na lista de curtidas quando clicado sobre o nome da música na tela
     function playFromLikedMusics(){
         let playLiked = document.querySelector(".musicaCurtidas");
         playLiked.addEventListener("click", (e) =>{
@@ -191,7 +167,7 @@ window.addEventListener("load", () =>{
             }})
     }
 
-    
+    // Passar para a música anterior
     function prevMusic(){
         if(btnShuffle.classList.contains("clickedShuffle")){
             musicIndex = Math.floor((Math.random()) * allMusic.length);
@@ -220,7 +196,7 @@ window.addEventListener("load", () =>{
     }
     
     
-
+    // Passar para a próxima música
     function nextMusic(){
         if(btnShuffle.classList.contains("clickedShuffle")){
             musicIndex = Math.floor((Math.random()) * allMusic.length);
@@ -238,17 +214,17 @@ window.addEventListener("load", () =>{
             pHeart.classList.remove('fa-regular')
             pHeart.classList.add('fa-solid')
         } else {
-        // console.log("Song not found:", songToCheck);
             pHeart.classList.remove('fa-solid')
             pHeart.classList.add('fa-regular')
             pHeart.classList.remove('clickHeart')
         }
     }
 
+    // Aciona a função prevMusic
     prevBtn.addEventListener("click", () => {
         prevMusic();
-        // console.log(musicIndex)
     })
+    // Aciona a função nextMusic
     nextBtn.addEventListener("click", () =>{
         nextMusic();
     })
@@ -256,10 +232,8 @@ window.addEventListener("load", () =>{
     
 })
 
-export function teste(){
-    listLikedMusic()
-}
 
+// Carrega informações da música para o player
 export function loadMusic(indexNumb){
     
     musicName.innerText = allMusic[indexNumb -1].name;
@@ -270,29 +244,28 @@ export function loadMusic(indexNumb){
     
 }
 
-
+// Toca a música
 export function playMusic(){
     song.play();
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
 }
 
+// Pausa a música
 function pauseMusic(){
     song.pause();
     ctrlIcon.classList.remove("fa-pause");
     ctrlIcon.classList.add("fa-play");
 }
 
-
-
-
+// Aciona a função play ou pause music
 playPauseBtn.addEventListener("click", () =>{
     const isMusicPlay = ctrlIcon.classList.contains("fa-pause");
     isMusicPlay ? pauseMusic() : playMusic();
 })
 
 
-
+// Acionar funcionalidade de repetir a música que está tocando
 song.loop = false;
 repeatBtn.addEventListener("click", () =>{
     if(song.loop){
@@ -304,28 +277,27 @@ repeatBtn.addEventListener("click", () =>{
     Btnrepeat.classList.toggle("clicked"); // Toggle the 'clicked' class
 })
 
+// Acionar a funcionalidade de reprodução aleatória das músicas
 isAleatorio.addEventListener("click",() =>{
     btnShuffle.classList.toggle("clickedShuffle")
 })
 
 
-
+// Mudar ícone para indicar que é uma música curtida
 playerHeart.addEventListener("click", () =>{
     if (pHeart.classList.contains("fa-regular")) {
         pHeart.classList.remove("fa-regular");
         pHeart.classList.add("fa-solid");
         pHeart.classList.add("clickHeart");
-        // adicionar no local storage
     } else {
         pHeart.classList.remove("fa-solid");
         pHeart.classList.remove("clickHeart");
         pHeart.classList.add("fa-regular");
-        // remover do local storage
     }
 })
 
 
-
+// Atualizar valor de tempo reproduzido da música
 song.ontimeupdate = (e) =>{
     const currentTime = e.target.currentTime;
     const duration = e.target.duration;
@@ -340,6 +312,7 @@ song.ontimeupdate = (e) =>{
     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
 }
 
+// Definir duração da música
 song.addEventListener("loadeddata",()=>{
     let musicDuration = document.getElementById("max-duration");
     let songDuration = song.duration;
@@ -352,13 +325,14 @@ song.addEventListener("loadeddata",()=>{
     musicDuration.innerText = `${totalMin}:${totalSec}`
 });
 
+// Tocar a próxima música quando a que está tocando acaba
 song.addEventListener('ended', () =>{
     musicIndex++;
     loadMusic(musicIndex);
     song.play();
 })
 
-
+// Ajusta barra de progresso caso clique para avançar
 progressArea.addEventListener("click", (e)=>{
     let progressWidth = progressArea.clientWidth;
     let clickedOffsetX = e.offsetX;
@@ -368,11 +342,10 @@ progressArea.addEventListener("click", (e)=>{
 })
 
 
+// Event listener para controle do volume
 function setVolume() {
     song.volume = volumeControl.value;
   }
-
-// Event listener for volume control
 volumeControl.addEventListener('input', setVolume);
 
 // const musicFavorite = allMusic.filter((x) => x.id === 5)

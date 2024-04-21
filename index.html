@@ -13,7 +13,9 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/audio.css">
     <link rel="stylesheet" href="css/letra_player.css">
-    <script src="js/pesquisa.js" type="module"></script>
+    
+
+    <script src="js/tela-busca.js" type="module"></script>
 
     <link
             rel="stylesheet"
@@ -41,8 +43,8 @@
             <!-- sidebar_menu -->
             <div class="sidebar_menu">
                 <a class="sidebar_menu_selecionado" href="index.html"><i class="fas fa-home"></i>Início</a>
-                <a href="buscar.html" id="open-modal-2"><i class="fas fa-search"></i>Buscar</a>
-                <a href="#"><i class="fas fa-database"></i>Biblioteca</a>
+                <a class="searchClass" id="open-modal-2"><i class="fas fa-search"></i>Buscar</a>
+                <!-- <a href="#"><i class="fas fa-database"></i>Biblioteca</a> -->
             </div>
             <!-- fim sidebar_menu-->
 
@@ -95,60 +97,63 @@
         </ul>
     </div>
 
-
-    <div class="cards">
-        <div>
-            <a href="rock.html"><img src="img/rock.jpg" alt=""></a>
-            <h3>Rock In Roll</h3>
-        </div>
-
-        <div>
-            <a href="axe.html"><img src="img/axe.jpg" alt=""></a>
-            <h3>Axé</h3>
-        </div>
-
-        <div>
-            <a href="classica.html"><img src="img/classica.jpg" alt=""></a>
-            <h3>Classica</h3>
-        </div>
-
-        <div>
-            <a href="eletronoco.html"><img src="img/eletronico.jpg" alt=""></a>
-            <h3>Eletronico</h3>
-        </div>
-
-        <div>
-            <a href="hip_hop.html"><img src="img/hip hop.jpg" alt=""></a>
-            <h3>Hip Hop</h3>
-        </div>        
-    </div>
-
-    <div class="cards">
-        <div>
-            <a href="jazz.html"><img src="img/jazz.jpg" alt=""></a>
-            <h3>Jazz</h3>
-        </div>
-
-        <div>
-            <a href="mpb.html"><img src="img/mpb.jpg" alt=""></a>
-            <h3>MPB</h3>
-        </div>
-
-        <div>
-            <a href="pagode.html"><img src="img/pagode.jpg" alt=""></a>
-            <h3>Pagode</h3>
-        </div>
-
-        <div>
-            <a href="pop.html"><img src="img/pop.jpg" alt=""></a>
-            <h3>POP</h3>
-        </div>
+    <div class="main">
+        <div class="main-wraper">
+            <div class="cards">
+                <div class="ajustCard">
+                    <img src="img/rock.jpg" alt="rock">
+                    <h3 class="typeMusic">Rock In Roll</h3>
+                </div>
         
-        <div>
-            <a href="sertanejo.html"><img src="img/sertanejo.jpg" alt=""></a>
-            <h3>Sertanejo</h3>
+                <div class="ajustCard">
+                    <img class="imgCard" src="img/axe.jpg" alt="axe">
+                    <h3 id="typeMusic">Axé</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/classica.jpg" alt="classica">
+                    <h3 id="typeMusic">Classica</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/eletronico.jpg" alt="eletronico">
+                    <h3 id="typeMusic">Eletronico</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/hiphop.jpg" alt="hiphop">
+                    <h3 id="typeMusic">Hip Hop</h3>
+                </div>        
+
+                <div class="ajustCard">
+                    <img src="img/jazz.jpg" alt="jazz">
+                    <h3 id="typeMusic">Jazz</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/mpb.jpg" alt="mpb">
+                    <h3 id="typeMusic">MPB</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/pagode.jpg" alt="pagode">
+                    <h3 id="typeMusic">Pagode</h3>
+                </div>
+        
+                <div class="ajustCard">
+                    <img src="img/pop.jpg" alt="pop">
+                    <h3 id="typeMusic">POP</h3>
+                </div >
+                
+                <div class="ajustCard">
+                    <img src="img/sertanejo.jpg" alt="sertanejo">
+                    <h3 id="typeMusic">Sertanejo</h3>
+                </div>
+            </div>
         </div>
+       
     </div>
+   
 
     
 
@@ -206,16 +211,16 @@
             <!-- fim player spotify -->
         </div>
     </div>
-
-    
     <!-- fim player -->
-
+    <script src="js/tela-busca.js" type="module"></script>
     <script src="js/pesquisa.js" type="module"></script>
     <script src="js/all-music.js" type="module"></script>
     <script src="js/player.js" type="module"></script>
     <script src="js/api_vagalume.js" type="module"></script>
     <script src="js/modal.js"></script>
     <script src="js/add-song.js"></script>
+    <script src="js/music-category.js" type="module"></script>
+    <script src="js/play-music-category.js" type="module"></script>
     
 </body>
 </html>

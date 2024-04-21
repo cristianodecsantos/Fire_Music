@@ -68,7 +68,7 @@ i:hover{
 }
 .title,
 .artist {
-    display: -webkit-box;
+    display: block;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
@@ -76,7 +76,11 @@ i:hover{
 .title:hover,
 .artist:hover {
     text-decoration: underline;
+    cursor: pointer;
+    color: rgba(255, 110, 13, 0.61);
 }
+
+
 .artist{
     color: var(--secondary-color);
 }

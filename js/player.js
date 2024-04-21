@@ -144,6 +144,7 @@ window.addEventListener("load", () =>{
 
     function listLikedMusic (){
         const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+        
         const likedSongsList = document.querySelector('.main-wraper');
         
         // Clear the previous list of liked songs
@@ -160,8 +161,6 @@ window.addEventListener("load", () =>{
             listItem.innerHTML = `<p class="single-song paddingLeft">${song.name}</p> <p class="paddingLeft">-</p> <p class="paddingLeft">${song.artist}</p>`;
             divLista.appendChild(listItem);
 
-            // // Add event listener to allow unlike on click
-            // listItem.addEventListener('click', () => unlikeSong(song));
         });
         playFromLikedMusics();
     }
@@ -175,11 +174,6 @@ window.addEventListener("load", () =>{
         }
         return -1; // Return -1 if the song is not found
     }
-
-    // console.log(getIndexByNameAndArtist(allMusic, "Granada","Henrique e Juliano"))
-    
-    // let playLike = document.querySelector(".arrumarSeta");
-    // let idCurtida = document.getElementById("idCurtida")
 
     function playFromLikedMusics(){
         let playLiked = document.querySelector(".musicaCurtidas");
@@ -262,19 +256,17 @@ window.addEventListener("load", () =>{
     
 })
 
-
+export function teste(){
+    listLikedMusic()
+}
 
 export function loadMusic(indexNumb){
-    // let idMusic = allMusic[indexNumb - 1].id;
-    // console.log(idMusic)
+    
     musicName.innerText = allMusic[indexNumb -1].name;
     musicArtist.innerText = allMusic[indexNumb - 1].artist;
-    musicImg.src = `img/${allMusic[indexNumb - 1].img}.jpeg`
+    musicImg.src = `img/${allMusic[indexNumb - 1].img}.jpg`
     song.innerHTML=  `<source src="musicas/${allMusic[indexNumb - 1].src}.mp3" type="audio/mpeg">`
     song.load()
-    // 
-    // console.log(musicIndex)
-    // console.log(indexNumb)
     
 }
 
@@ -375,17 +367,9 @@ progressArea.addEventListener("click", (e)=>{
     playMusic();
 })
 
-// progressAreaVolume.addEventListener("click", (e)=>{
-//     let progressWidth = progressAreaVolume.clientWidth;
-//     let clickedOffsetX = e.offsetX;
-//     let songVolume = 1;
-//     song.volume = (clickedOffsetX / progressWidth) * songVolume;
-    
-// })
 
 function setVolume() {
     song.volume = volumeControl.value;
-    // progressBarVolume.style.width = volumeControl.value
   }
 
 // Event listener for volume control

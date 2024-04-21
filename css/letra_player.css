@@ -90,9 +90,12 @@ body, html {
     position: relative;
     color: #fff;
     width: 300px;
-    top: -450px;
+    top: -470px;
     font-weight: bold;
     font-size: 15px;
+    align-items: center;
+    align-content: center;
+    text-align: justify;
 }
 .artist-name {
     position: relative;

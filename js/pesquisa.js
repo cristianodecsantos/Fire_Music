@@ -1,37 +1,8 @@
 import allMusic from "./all-music.js";
 import { loadMusic, playMusic } from "./player.js";
-// import { playMusic } from './player.js';
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-const mButton = document.querySelector(".mButton")
-const mLetra = document.querySelector(".lButton")
-const resultado = document.getElementById("resultSearch");
 const items = allMusic;
+
 let i = 0
-
-let song = document.getElementById('song')
-
-// function handleClick() {
-//     alert("Button clicked!");
-// }
-
-// song.addEventListener("loadeddata",()=>{
-//     var myButton = mButton;
-//     myButton.onclick = msButton();
-// })
-
-// song.addEventListener("loadeddata",()=>{
-//     var myButton = mLetra;
-//     myButton.onclick = msLetra();
-// })
-
-// document.addEventListener("DOMContentLoaded", function() {
-    
-// });
-
-// document.addEventListener("DOMContentLoaded", function() {
-    
-// });
 
 function playFromSearchMusics(){
     
@@ -52,57 +23,57 @@ function playFromSearchMusics(){
 }
 
 
-mButton.addEventListener("click", () => {
-    resultado.innerHTML = ''
+export function mButton(searchResultsF, searchInputF ) {
+    console.log("clicado")
+    searchResultsF.innerHTML = ``
+    const resultado = document.getElementById("resultSearch");
     function filterItems(query) {
         return items.filter(items => items.name.toLowerCase().includes(query.toLowerCase()));
     }
     
     function displayResults(results) {
-        searchResults.innerHTML = '';
+        searchResultsF.innerHTML = '';
         results.forEach(result => {
             i = 1
             const li = document.createElement('li');
             li.classList.add("ajuste")
+            li.classList.add("ajustaListaBusca")
             // li.textContent = `${result.name} - Artista: ${result.artist}`;
             li.innerHTML = `
                 <p class="resultList ajustResultList">${result.name}</p> <p class="ajustResultList">-</p> <p class="ajustResultList"> Artista: ${result.artist}</p>
                 `
-            searchResults.appendChild(li);
-            resultado.appendChild(searchResults);
+            searchResultsF.appendChild(li);
+            resultado.appendChild(searchResultsF);
             li.style.display = "flex";
             i++;
         });
     }
-    const query = searchInput.value.trim();
+    const query = searchInputF.value.trim();
     const results = filterItems(query);
     displayResults(results);  
     playFromSearchMusics();
 
-});
+};
 
-searchInput.addEventListener('input', () => {
-    const query = searchInput.value.trim();
-    if (query !== '') { 
-        "ok"     
-    } else {
-        resultado.innerHTML = '';
-    }      
-    });
+// searchInput.addEventListener('input', () => {
+//     const query = searchInput.value.trim();
+//     if (query !== '') { 
+//         "ok"     
+//     } else {
+//         resultado.innerHTML = '';
+//     }      
+//     });
 
 
-mLetra.addEventListener("click",() =>{
-    searchResults.innerHTML = ''
-    // const form = document.getElementById('form')
-    const search = document.getElementById('searchInput')
+export function mLetra(search){
+    
     const result = document.getElementById('resultSearch')
-    const modalLetra = document.getElementById('modalLetra')
+    
     
     /// api URL ///
     const apiURL = 'https://api.lyrics.ovh';
     
-    // form.addEventListener('submit', e=> {
-    //     e.preventDefault();
+    
     const searchValue = search.value.trim();
     
         if(!searchValue){
@@ -111,13 +82,8 @@ mLetra.addEventListener("click",() =>{
         else{ 
             searchSong(searchValue)
         }
-    // })
+
     
-    // Key up event listner
-    const searchOnKeyUp =() =>{
-        searchValue = search.value.trim();
-        searchSong(searchValue)
-    }
     //search song 
     async function searchSong(searchValue){
         const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`)
@@ -131,11 +97,10 @@ mLetra.addEventListener("click",() =>{
     function showData(data){
       
         result.innerHTML = `
-       
-        <ul class="searchResultados">
+        <ul id="searchResults" class="searchResultados">
           ${data.data
             .map(song=> `<li class="ajustaListaBusca">
-                        <div>
+                        <div id= "modalLetra">
                             <strong>${song.artist.name}</strong> -${song.title} 
                         </div>
                         <a id="openModal" class="abrirModal" data-artist="${song.artist.name}" data-songtitle="${song.title}" class="btn " data-bs-toggle="modal" href="#showModal" role="button">get Lyrics</a>
@@ -145,14 +110,6 @@ mLetra.addEventListener("click",() =>{
             .join('')}
         </ul>
       `;    
-        // const openModal = document.getElementById('openModal');
-        
-        // const modal = document.getElementById('showModal');
-
-        // openModal.addEventListener('click', () => {
-        //     modal.style.display = 'block';
-        // });
-        
         
     
     }
@@ -178,6 +135,7 @@ mLetra.addEventListener("click",() =>{
     
         const data = await res.json();
         const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
+        const modalLetra = document.getElementById('modalLetra')
         modalLetra.innerHTML = ` 
         <div class="modal openModal" tabindex="-1" id="showModal" >
         <div class="modal-dialog custom-modal-lg" >
@@ -202,9 +160,7 @@ mLetra.addEventListener("click",() =>{
         closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
         modalLetra.innerHTML = ''
-    });
-    // <span id="closeModal">&times;</span>
-    // <div data-artist="${artist}" data-songtitle="${songTitle}"> get lyrics</div>
+        });
     }
     
     //event listener in get song button
@@ -220,37 +176,6 @@ mLetra.addEventListener("click",() =>{
         }
         
     })
-})
-
-// let isButton1CallingFirstFunction = true;
-// let isButton2CallingFirstFunction = true;
-
-// // Function to toggle between the functions for button 1
-// function toggleFunctionsForButton1() {
-//     if (isButton1CallingFirstFunction) {
-//         msButton();
-//     } else {
-//         msLetra();
-//     }
     
-//     // Toggle the flag for the next click
-//     isButton1CallingFirstFunction = !isButton1CallingFirstFunction;
-// }
+};
 
-// // Function to toggle between the functions for button 2
-// function toggleFunctionsForButton2() {
-//     if (isButton2CallingFirstFunction) {
-//         msButton();
-//     } else {
-//         msLetra();
-//     }
-    
-//     // Toggle the flag for the next click
-//     isButton2CallingFirstFunction = !isButton2CallingFirstFunction;
-// }
-
-// // Add event listener to button 1
-// mButton.addEventListener("click", toggleFunctionsForButton1);
-
-// // Add event listener to button 2
-// mLetra.addEventListener("click", toggleFunctionsForButton2);

@@ -1,8 +1,7 @@
-import allMusic from "./all-music.js";
-import { loadMusic} from "./player.js";
 const mudarTela = document.querySelector(".mudarTela");
 let prevBtn = document.querySelector("#prev");
 let nextBtn = document.querySelector("#next");
+let likeMusic = document.querySelector(".likeMusic");
 
 function letraMusica(){
     var artist = document.querySelector(".artist").innerText;
@@ -11,7 +10,7 @@ function letraMusica(){
     let mainArea = document.querySelector(".main")
     var song   = musica.innerText;
     const musicaFormatado = song.replace(/ /g, "%20");
-    console.log(musicaFormatado)
+    // console.log(musicaFormatado)
     // let container = document.querySelector(".infos")
     const key =  '3797b52f5f67c0c6b93bcbd8cb4db9d4';
     
@@ -41,9 +40,11 @@ function letraMusica(){
         const dataArtista = await fetch(`https://www.vagalume.com.br/${artista.toLocaleLowerCase()}/index.js`, {
             method: "GET"
         }).then(res => res.json());
+        mainArea.innerHTML=''
         mainArea.innerHTML = `
+        <div class="main-wraper">
         <div class="absolute">
-            <a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </a> 
+            <div  class="mudarTelaMusica"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </div> 
         </div>
         <div class="absoluteInfo">
             <p class="artist-name">Artista: Nome do Artista</p>
@@ -59,9 +60,10 @@ function letraMusica(){
             </div>
             
         </div>
-        
+        </div>
         `
         let nomeArtist = document.querySelector(".artist-name")
+        let mainWraper = document.querySelector(".main-wraper")
         let imagem = document.querySelector(".logoArtist")
         let letra = document.querySelector(".containerLetra")
         console.log(dataArtista.artist.desc)
@@ -80,7 +82,8 @@ function letraMusica(){
         `
         
         
-        mainArea.appendChild(infos)
+        mainWraper.appendChild(infos)
+        mainArea.appendChild(mainWraper)
         letra.innerText = dataLetra.mus[0].text
     }
     getResults();
@@ -97,11 +100,11 @@ prevBtn.addEventListener("click", () => {
         if(telaAberta){
             letraMusica();
         }else{
-            console.log("ok")
+            // console.log("ok")
         }
     })
     
-    // console.log(musicIndex)
+    
 })
 nextBtn.addEventListener("click", () =>{
     let song = document.getElementById('song')
@@ -110,43 +113,44 @@ nextBtn.addEventListener("click", () =>{
         if(telaAberta){
             letraMusica();
         }else{
-            console.log("ok")
+            // console.log("ok")
         }
         
     })
 })
 
-const arrowBack = document.querySelector(".arrowAjuste")
+const arrowBack = document.querySelector(".mudarTelaMusica")
+if (arrowBack){
+    arrowBack.addEventListener("click", ()=>{
 
-arrowBack.addEventListener("click", ()=>{
 
-
-    // let song = document.getElementById('song')
-    // song.classList.add("classTest")
-    let mainArea = document.querySelector(".main")
-    divMainContent = `
-    <div class="main-wraper">
-            <div id="teste" class="main_title">
-                <input type="text" id="searchInput" placeholder="Digite para pesquisar...">
-                <button class="mButton">Buscar Música</button>
-                <button  class="lButton">Buscar Letra</button>
-            </div>
-            <div id="resultSearch">
-                <ul id="searchResults"></ul>
-                
-            </div>
-            <div id="modalLetra">
-
-            </div>
-            
-          <div >                
-              <!-- <div class="main_col">
-                  <img src="img/top50.png" alt="Paradas">
-                  <h3>As 50 mais tocadas</h3>
-              </div> -->   
-          </div>
-        </div>    
-    `
-    mainArea.appendChild(divMainContent)
     
-})
+        let mainArea = document.querySelector(".main")
+        mainArea.innerHTML = `
+        <div class="main-wraper">
+                <div id="teste" class="main_title">
+                    <input type="text" id="searchInput" placeholder="Digite para pesquisar...">
+                    <button class="mButton">Buscar Música</button>
+                    <button  class="lButton">Buscar Letra</button>
+                </div>
+                <div id="resultSearch">
+                    <ul id="searchResults"></ul>
+                    
+                </div>
+                <div id="modalLetra">
+    
+                </div>
+                
+              <div >                
+                  <!-- <div class="main_col">
+                      <img src="img/top50.png" alt="Paradas">
+                      <h3>As 50 mais tocadas</h3>
+                  </div> -->   
+              </div>
+            </div>    
+        `
+
+        
+    })
+    
+}else{}

@@ -10,14 +10,6 @@
 
 <body>
 
-    <!-- <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="./img/logo.png" alt="Spotify">
-            </a>
-        </div>
-    </header> -->
-
     <section>
 
         <div class="main">
@@ -41,12 +33,17 @@
 
             <div class="log-in">
                 <form id="form">
-                    <label for="email">E-mail ou nome usuário</label>
-                    <input type="text" id="email" placeholder="Email ou nome de usuário" required>
+                    <div>
+                    <label for="email">E-mail ou nome de usuário</label>
+                    <input  type="text" id="email" placeholder="Email ou nome de usuário" class="inputs required" oninput="emailValidate()">
+                    <span class="span-required">O e-mail é obrigatório!</span>
+                    </div>
 
-
+                    <div>
                     <label for="password">Senha</label>
-                    <input type="password" id="password"  placeholder="Senha" required>
+                    <input  type="password" id="password"  placeholder="Senha" class="inputs required" oninput="passwordValidate()">
+                    <span class="span-required">A senha é obrigatória!</span>
+                    </div>
 
                     <div class="switch">
                         <input type="checkbox" id="switch" checked>
@@ -54,8 +51,7 @@
                         <span>Lembrar de mim</span>
                     </div>
 
-                    <input type="submit" class="entrar" name="acao" value="Entrar">
-                    <a href="#">Esqueceu a senha?</a>
+                   <input type="submit" class="entrar" name="acao" value="Entrar">
                 </form>
             </div>
 

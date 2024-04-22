@@ -1,28 +1,46 @@
-const form = document.querySelector("#form");
-const emailInput = document.querySelector("#email");
-const passwordInput = document.querySelector("#password");
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault(); 
-
-    if (emailInput.value === "" || !isEmailValid(emailInput.value)) {
-        alert("Por favor, preencha o seu e-mail ou nome de usuário.")
-        return;
-    }
-
-    !validatePassword(passwordInput.value, 8) && alert("A senha precisa ser no mínimo de 8 dígitos.");
+const form = document.querySelector('form');
+const campos = document.querySelectorAll('.required');
+const spans = document.querySelectorAll('.span-required');
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
 
 
-    form.submit();
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    emailValidate();
+    passwordValidate();
+    
 });
 
-function isEmailValid(email) {
-    return /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/.test(email);
+function setError(index){
+    campos[index].style.border = '2px solid #e63636';
+    spans[index].style.display = 'block';
 }
 
+function removeError(index){
+    campos[index].style.border = '';
+    spans[index].style.display = 'none';
+}
 
-function validatePassword(password, minDigits) {
-    return password.length >= minDigits ? true : false;
+function emailValidate(){
+    if(!emailRegex.test(campos[0].value))
+    {
+        setError(0);
+    } 
+    else 
+    {
+        removeError(0);
+    }
+}
+
+function passwordValidate(){
+    if(campos[1].value.length < 8)
+    {
+        setError(1);
+    } 
+    else 
+    {
+        removeError(1);
+    }
 }
 
 

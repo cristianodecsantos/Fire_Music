@@ -153,6 +153,14 @@ section div.main .log-in form input {
     transition: .1s;
 }
 
+
+.span-required {
+    display: none;
+    color: red;
+    margin: 5px;
+}
+
+
 .switch input:active+label {
     background-color: #727272;
 }
@@ -164,6 +172,7 @@ section div.main .log-in form input {
 .switch input:checked+label::after {
     transform: translateX(calc(100% + 5px));
 }
+
 
 input#switch {
     display: none;
@@ -184,11 +193,13 @@ section div.main .log-in .entrar {
     font-weight: bold;
     padding: 8px 32px;
     height: 48px;
-    width: 324px;
-    font-size: 16px;
+    width: 325px;
+    font-size: 20px;
     color: #000;
-    margin: 20px 0px;
+    margin: 15px 0px;
     cursor: pointer;
+    text-decoration: none;    
+    
 }
 
 section div.main .log-in .entrar:hover{
@@ -196,13 +207,6 @@ section div.main .log-in .entrar:hover{
 }
 
 
-section div.main .log-in a {
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: 400;
-    text-decoration: underline;
-}
 section div.main .last {
     margin: 10px 0;
     text-align: center;
@@ -217,7 +221,3 @@ section div.main .last a {
 color: white;
 text-decoration: underline;
 }
-
-
-
-  

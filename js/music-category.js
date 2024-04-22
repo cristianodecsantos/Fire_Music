@@ -16,7 +16,7 @@ function cardsMusicType() {
 
             // Criando tela para adicionar as músicas que atendem ao critério da categoria
             const categorySongsList = document.querySelector('.main-wraper');
-            categorySongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
+            categorySongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="./index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
             let divLista = document.createElement('div');
             divLista.classList.add('listMusic');
             categorySongsList.appendChild(divLista);

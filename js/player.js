@@ -123,7 +123,7 @@ window.addEventListener("load", () =>{
         const likedSongsList = document.querySelector('.main-wraper');
         
         // Clear the previous list of liked songs
-        likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="/Fizer_Music/index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
+        likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
         let divLista = document.createElement('div')
         divLista.classList.add('musicaCurtidas')
         likedSongsList.appendChild(divLista)

@@ -338,6 +338,9 @@ a.sidebar_menu_selecionado:hover{
     padding-top: 50px;
     color: #fff;
     font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    
 }
 .musicaCurtidas li{
     margin-top: 5px;
@@ -345,6 +348,10 @@ a.sidebar_menu_selecionado:hover{
 
 .playCurtida{
     display: flex;
+    border: 1px solid white;
+    padding-top: 10px;
+    /* text-align: center; */
+    justify-content: center;
 }
 /* .listaPesquisa{
     color: #fff;
@@ -362,6 +369,8 @@ a.sidebar_menu_selecionado:hover{
     padding-top: 50px;
     color: #fff;
     font-size: 20px;
+    font-weight: 500;
+    text-align: center;
 }
 .listMusic li{
     margin-top: 5px;
@@ -370,6 +379,10 @@ a.sidebar_menu_selecionado:hover{
 .musics{
     display: flex;
     /* width: 100px; */
+    border: 1px solid white;
+    padding-top: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
 }
 /* .listaPesquisa{
     color: #fff;

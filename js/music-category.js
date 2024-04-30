@@ -20,6 +20,7 @@ function cardsMusicType() {
             let divLista = document.createElement('div');
             divLista.classList.add('listMusic');
             categorySongsList.appendChild(divLista);
+            divLista.innerText = altText.toLocaleUpperCase()
             
             // Adicionando na tela todas as músicas que correspondem a categoria do card clicado
             allMusic.forEach(song => {

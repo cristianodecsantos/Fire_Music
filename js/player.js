@@ -126,6 +126,7 @@ window.addEventListener("load", () =>{
         likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
         let divLista = document.createElement('div')
         divLista.classList.add('musicaCurtidas')
+        divLista.innerText = "Músicas Curtidas"
         likedSongsList.appendChild(divLista)
         // Populate the list with the current liked songs
         likedSongs.forEach(song => {

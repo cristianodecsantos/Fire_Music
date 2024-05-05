@@ -1,8 +1,8 @@
 import allMusic from "./all-music.js";
 import { playFromCategoryMusics } from "./play-music-category.js";
+import { mainScreen } from "./api_vagalume.js";
 
-
-function cardsMusicType() {
+export function cardsMusicType() {
     let musicType = document.querySelector(".cards");
     musicType.addEventListener("click", async (e) => {
         if (e.target.parentElement.classList.contains("ajustCard")) {
@@ -16,7 +16,7 @@ function cardsMusicType() {
 
             // Criando tela para adicionar as músicas que atendem ao critério da categoria
             const categorySongsList = document.querySelector('.main-wraper');
-            categorySongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="./index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
+            categorySongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a  class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
             let divLista = document.createElement('div');
             divLista.classList.add('listMusic');
             categorySongsList.appendChild(divLista);
@@ -41,11 +41,14 @@ function cardsMusicType() {
             });
 
         }
+        let beginButton = document.querySelector(".mudarTela");
+            beginButton.addEventListener("click", () =>{
+            mainScreen()})
     });
     
+
 }
 cardsMusicType();
-
 
 
 

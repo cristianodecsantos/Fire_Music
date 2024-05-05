@@ -1,5 +1,6 @@
 import allMusic from "./all-music.js";
-
+import { mainScreen } from "./api_vagalume.js";
+import { cardsMusicType } from "./music-category.js";
 let song = document.getElementById('song')
 let ctrlIcon = document.getElementById('ctrlIcon')
 let musicImg = document.getElementById("img-song");
@@ -19,7 +20,7 @@ let btnShuffle = document.querySelector(".cShuffle")
 let likeMusic = document.querySelector(".likeMusic");
 let musicIndex = Math.floor((Math.random()) * allMusic.length);
 const volumeControl = document.getElementById('volumeControl');
-
+let beginButton = document.querySelector(".sidebar_menu_selecionado")
 const isMusicPaused = true;
 
 
@@ -31,8 +32,10 @@ const isMusicPaused = true;
 // document.addEventListener("DOMContentLoaded", ()=>{
 //     loadMusic(musicIndex)
 // })
+
+
 window.addEventListener("load", () =>{
-    
+
     loadMusic(musicIndex);
 
     pHeart.addEventListener("click", () => {
@@ -123,7 +126,7 @@ window.addEventListener("load", () =>{
         const likedSongsList = document.querySelector('.main-wraper');
         
         // Clear the previous list of liked songs
-        likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a href="index.html" class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
+        likedSongsList.innerHTML = `<div id="turnPage" class="arrumarSeta"><a  class="mudarTela"><i class="fa-solid fa-arrow-left arrowLike"></i> </a></div> `;
         let divLista = document.createElement('div')
         divLista.classList.add('musicaCurtidas')
         divLista.innerText = "Músicas Curtidas"
@@ -139,6 +142,9 @@ window.addEventListener("load", () =>{
 
         });
         playFromLikedMusics();
+        let beginButton = document.querySelector(".mudarTela");
+        beginButton.addEventListener("click", () =>{
+        mainScreen()})
     }
 
     // Função para pegar o índice de uma música pelo nome da música e do artista
@@ -230,10 +236,72 @@ window.addEventListener("load", () =>{
         nextMusic();
     })
 
+    // ------------------------------------------
     
 })
 
+beginButton.addEventListener("click", () =>{
+    let mainArea = document.querySelector(".main")
+    mainArea.innerHTML = ''
+    mainArea.innerHTML=`
+    <div class="main-wraper">
+        <div class="cards">
+            <div class="ajustCard">
+                <img src="img/rock.jpg" alt="rock">
+                <h3 class="typeMusic">Rock In Roll</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img class="imgCard" src="img/axe.jpg" alt="axe">
+                <h3 id="typeMusic">Axé</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/classica.jpg" alt="classica">
+                <h3 id="typeMusic">Classica</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/eletronico.jpg" alt="eletronico">
+                <h3 id="typeMusic">Eletronico</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/hiphop.jpg" alt="hiphop">
+                <h3 id="typeMusic">Hip Hop</h3>
+            </div>        
 
+            <div class="ajustCard">
+                <img src="img/jazz.jpg" alt="jazz">
+                <h3 id="typeMusic">Jazz</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/mpb.jpg" alt="mpb">
+                <h3 id="typeMusic">MPB</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/pagode.jpg" alt="pagode">
+                <h3 id="typeMusic">Pagode</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/pop.jpg" alt="pop">
+                <h3 id="typeMusic">POP</h3>
+            </div >
+            
+            <div class="ajustCard">
+                <img src="img/sertanejo.jpg" alt="sertanejo">
+                <h3 id="typeMusic">Sertanejo</h3>
+            </div>
+        </div>
+    </div>
+    `
+    cardsMusicType();
+
+})
+ 
 // Carrega informações da música para o player
 export function loadMusic(indexNumb){
     

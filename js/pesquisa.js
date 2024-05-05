@@ -26,7 +26,7 @@ function playFromSearchMusics(){
 
 // Buscar música dentro do arquivo allMusic
 export function mButton(searchResultsF, searchInputF ) {
-    console.log("clicado")
+    // console.log("clicado")
     searchResultsF.innerHTML = ``
     const resultado = document.getElementById("resultSearch");
     function filterItems(query) {

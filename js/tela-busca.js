@@ -18,10 +18,7 @@ searchButton.addEventListener("click", ()=>{
         </div>
     
         <div >                
-            <!-- <div class="main_col">
-                <img src="img/top50.png" alt="Paradas">
-                <h3>As 50 mais tocadas</h3>
-            </div> -->    
+             
         </div>
     </div>
     

@@ -1,7 +1,72 @@
+import { cardsMusicType } from "./music-category.js";
 const mudarTela = document.querySelector(".mudarTela");
 let prevBtn = document.querySelector("#prev");
 let nextBtn = document.querySelector("#next");
 let likeMusic = document.querySelector(".likeMusic");
+
+
+export function mainScreen(){
+    let mainArea = document.querySelector(".main")
+    mainArea.innerHTML = ''
+    mainArea.innerHTML=`
+    <div class="main-wraper">
+        <div class="cards">
+            <div class="ajustCard">
+                <img src="img/rock.jpg" alt="rock">
+                <h3 class="typeMusic">Rock In Roll</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img class="imgCard" src="img/axe.jpg" alt="axe">
+                <h3 id="typeMusic">Axé</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/classica.jpg" alt="classica">
+                <h3 id="typeMusic">Classica</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/eletronico.jpg" alt="eletronico">
+                <h3 id="typeMusic">Eletronico</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/hiphop.jpg" alt="hiphop">
+                <h3 id="typeMusic">Hip Hop</h3>
+            </div>        
+
+            <div class="ajustCard">
+                <img src="img/jazz.jpg" alt="jazz">
+                <h3 id="typeMusic">Jazz</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/mpb.jpg" alt="mpb">
+                <h3 id="typeMusic">MPB</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/pagode.jpg" alt="pagode">
+                <h3 id="typeMusic">Pagode</h3>
+            </div>
+    
+            <div class="ajustCard">
+                <img src="img/pop.jpg" alt="pop">
+                <h3 id="typeMusic">POP</h3>
+            </div >
+            
+            <div class="ajustCard">
+                <img src="img/sertanejo.jpg" alt="sertanejo">
+                <h3 id="typeMusic">Sertanejo</h3>
+            </div>
+        </div>
+    </div>
+    `
+    cardsMusicType();
+
+}
+
 
 function letraMusica(){
     // Variáveis e definições para fazer busca na API
@@ -45,7 +110,7 @@ function letraMusica(){
         mainArea.innerHTML = `
         <div class="main-wraper">
         <div class="absolute">
-            <a  class="mudarTelaMusica" href="index.html"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </a> 
+            <a  class="mudarTelaMusica"><i class="fa-solid fa-arrow-left arrowAjuste"></i> </a> 
         </div>
         <div class="absoluteInfo">
             <p class="artist-name">Artista: Nome do Artista</p>
@@ -86,13 +151,19 @@ function letraMusica(){
         mainWraper.appendChild(infos)
         mainArea.appendChild(mainWraper)
         letra.innerText = dataLetra.mus[0].text
+
+        let beginButton = document.querySelector(".mudarTelaMusica");
+        beginButton.addEventListener("click", () =>{
+        mainScreen()})
     }
     getResults();
+    
 }
 
 // Chama a função quando clica no ícone de informação
 mudarTela.addEventListener("click", () =>{    
     letraMusica();
+    
 })
 
 // Mudar a letra da música conforme passa música
@@ -119,3 +190,4 @@ nextBtn.addEventListener("click", () =>{
         
     })
 })
+

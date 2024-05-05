@@ -76,7 +76,8 @@ body, html {
 }
 
 .arrowAjuste:hover{
-    color: rgba(255, 110, 13, 0.95)
+    color: rgba(255, 110, 13, 0.95);
+    cursor: pointer
 }
 .logoArtist {
     position: relative;

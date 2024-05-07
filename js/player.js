@@ -33,6 +33,38 @@ const isMusicPaused = true;
 //     loadMusic(musicIndex)
 // })
 
+// Função para pegar o índice de uma música pelo nome da música e do artista
+export function getIndexByNameAndArtist(likedSongs, songName, artistName) {
+    for (let i = 0; i < likedSongs.length; i++) {
+        if (likedSongs[i].name === songName && likedSongs[i].artist === artistName) {
+            return i; // Return the index if the song is found
+        }
+    }
+    return -1; // Return -1 if the song is not found
+}
+
+// Checa se a música já está curtida ou não
+export function alreadyLiked() {
+    const songName = musicName.innerText;
+    const artistName = musicArtist.innerText;
+    let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
+    let index = getIndexByNameAndArtist(likedSongs, songName, artistName);
+    console.log(index)
+    if (index !== -1 && likedSongs[index].name === songName && likedSongs[index].artist === artistName) {
+        pHeart.classList.remove('fa-regular');
+        pHeart.classList.add('fa-solid');
+        // pHeart.classList.add('pHeart')
+        pHeart.classList.add('clickHeart')
+        
+    } else {
+        pHeart.classList.remove('fa-solid');
+        pHeart.classList.add('fa-regular');
+        // pHeart.classList.remove('pHeart')
+        pHeart.classList.remove('clickHeart')
+    }
+}
+
+
 
 window.addEventListener("load", () =>{
 
@@ -94,21 +126,9 @@ window.addEventListener("load", () =>{
         }
     }
 
-    // Checa se a música já está curtida ou não
-    function alreadyLiked() {
-        const songName = musicName.innerText;
-        const artistName = musicArtist.innerText;
-        let likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
-        let index = getIndexByNameAndArtist(likedSongs, songName, artistName);
-        console.log(index)
-        if (likedSongs[index].name === songName && likedSongs[index].artist === artistName) {
-            pHeart.classList.remove('fa-regular');
-            pHeart.classList.add('fa-solid');
-            pHeart.classList.add('pHeart')
-            pHeart.classList.add('clickHeart')
-            
-        }
-    }
+    // song.addEventListener("canplay", ()=>{
+    //     alreadyLiked()
+    // })
 
     song.addEventListener("loadeddata",()=>{
         alreadyLiked();
@@ -147,15 +167,7 @@ window.addEventListener("load", () =>{
         mainScreen()})
     }
 
-    // Função para pegar o índice de uma música pelo nome da música e do artista
-    function getIndexByNameAndArtist(likedSongs, songName, artistName) {
-        for (let i = 0; i < likedSongs.length; i++) {
-            if (likedSongs[i].name === songName && likedSongs[i].artist === artistName) {
-                return i; // Return the index if the song is found
-            }
-        }
-        return -1; // Return -1 if the song is not found
-    }
+    
 
     // Toca as músicas que estão na lista de curtidas quando clicado sobre o nome da música na tela
     function playFromLikedMusics(){
@@ -217,7 +229,7 @@ window.addEventListener("load", () =>{
         const likedSongs = JSON.parse(localStorage.getItem('likedSongs')) || [];
         const foundSong =  likedSongs.some((song) => { return song.name === musicName.innerText && song.artist === musicArtist.innerText })
         if (foundSong) {
-            console.log("Song found:", foundSong);
+            // console.log("Song found:", foundSong);
             pHeart.classList.remove('fa-regular')
             pHeart.classList.add('fa-solid')
         } else {
@@ -310,6 +322,7 @@ export function loadMusic(indexNumb){
     musicImg.src = `img/${allMusic[indexNumb - 1].img}.jpg`
     song.innerHTML=  `<source src="musicas/${allMusic[indexNumb - 1].src}.mp3" type="audio/mpeg">`
     song.load()
+    // alreadyLiked()
     
 }
 
@@ -318,6 +331,7 @@ export function playMusic(){
     song.play();
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
+    
 }
 
 // Pausa a música
@@ -357,6 +371,7 @@ playerHeart.addEventListener("click", () =>{
     if (pHeart.classList.contains("fa-regular")) {
         pHeart.classList.remove("fa-regular");
         pHeart.classList.add("fa-solid");
+        // pHeart.classList.add('pHeart')
         pHeart.classList.add("clickHeart");
     } else {
         pHeart.classList.remove("fa-solid");
@@ -392,6 +407,7 @@ song.addEventListener("loadeddata",()=>{
         totalSec = `0${totalSec}`;
     }
     musicDuration.innerText = `${totalMin}:${totalSec}`
+    
 });
 
 // Tocar a próxima música quando a que está tocando acaba

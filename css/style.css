@@ -324,6 +324,12 @@ a.sidebar_menu_selecionado:hover{
     height: 10px;
 }
 
+.arrumarSeta2{
+    color: #fff;
+    width: 10px;
+    height: 10px;
+}
+
 .arrowLike{
     padding-top: 20px;
     font-size: x-large;
@@ -388,11 +394,11 @@ a.sidebar_menu_selecionado:hover{
     color: #fff;
 } */
 
-.single-song:hover{
+.single-song2:hover{
     cursor: pointer;
     color: rgb(230, 125, 50);
 }
-.paddingLeft{
+.paddingLeft2{
     padding-left: 10px;
 }
 
